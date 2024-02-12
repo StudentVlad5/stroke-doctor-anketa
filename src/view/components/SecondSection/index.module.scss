@@ -1,0 +1,38 @@
+.SecondSection {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  .whiteBox {
+    padding: 15px 28px;
+
+    background-color: #fff;
+    border: 1px solid var(--border-input-primary);
+  }
+  .inner {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    padding: 27px 18px;
+  }
+  .checkbox {
+    .title {
+      font-size: 28px;
+      strong {
+        font-weight: 600;
+      }
+    }
+    .subtitle {
+      font-size: 22px;
+    }
+  }
+  @media (max-width: 800px) {
+    .checkbox {
+      .title {
+        font-size: 24px;
+      }
+      .subtitle {
+        font-size: 18px;
+      }
+    }
+  }
+}

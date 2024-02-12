@@ -1,0 +1,26 @@
+.PatientInformation {
+  .sex {
+    .title {
+      display: block;
+      margin-bottom: 10px;
+
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--txt-color-primary);
+      @media (max-width: 800px) {
+        font-size: 24px;
+      }
+    }
+    .sexInner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+  }
+  .inner {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 27px 18px;
+  }
+}
