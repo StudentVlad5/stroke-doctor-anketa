@@ -12,18 +12,18 @@ export const SecondSection = () => {
     const { addQuizAnswerThunk } = useThunks(QuizThunks);
     const { quizList } = useAppSelector(QuizState);
 
-    const [treatmentStarted, setTreatmentStarted] = useState<boolean>(false);
-    const [intravenousAccessEstablished, setIntravenousAccessEstablished] = useState<boolean>(false);
-    const [takesAnticoagulants, setTakesAnticoagulants] = useState<boolean>(false);
+    const [treatmentStarted, setTreatmentStarted] = useState<boolean>((quizList.treatmentStarted === 'true' ? true : quizList.treatmentStarted === 'false' ? false : false));
+    const [intravenousAccessEstablished, setIntravenousAccessEstablished] = useState<boolean>(quizList.intravenousAccessEstablished === 'true' ? true : quizList.intravenousAccessEstablished === 'false' ? false : false);
+    const [takesAnticoagulants, setTakesAnticoagulants] = useState<boolean>(quizList.takesAnticoagulants === 'true' ? true : quizList.takesAnticoagulants === 'false' ? false : false);
     const [deliveryTimeHh, setDeliveryTimeHh] = useState<string>('');
     const [deliveryTimeMm, setDeliveryTimeMm] = useState<string>('');
-    const [takeECG, setTakeECG] = useState<boolean>(false);
+    const [takeECG, setTakeECG] = useState<boolean>(quizList.takeECG === 'true' ? true : quizList.takeECG === 'false' ? false : false);
 
     const debouncedTreatmentStarted = useDebounce(treatmentStarted, 500);
     const debouncedIntravenousAccessEstablished = useDebounce(intravenousAccessEstablished, 500);
     const debouncedTakesAnticoagulants = useDebounce(takesAnticoagulants, 500);
-    const debouncedDeliveryTimeHh = useDebounce(deliveryTimeHh, 500);
-    const debouncedDeliveryTimeMm = useDebounce(deliveryTimeMm, 500)
+    // const debouncedDeliveryTimeHh = useDebounce(deliveryTimeHh, 500);
+    // const debouncedDeliveryTimeMm = useDebounce(deliveryTimeMm, 500)
     const debouncedTakeECG = useDebounce(takeECG, 500)
 
     useMemo(() => {

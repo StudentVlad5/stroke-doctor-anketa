@@ -10,19 +10,19 @@ export const ThirdSection = () => {
     const { addQuizAnswerThunk } = useThunks(QuizThunks);
     const { quizList } = useAppSelector(QuizState);
 
-    const [bloodSugarLevel, setBloodSugarLevel] = useState('');
-    const [bodyTemperature, setBodyTemperature] = useState('');
-    const [arterialPressureS, setArterialPressureS] = useState('');
-    const [arterialPressureD, setArterialPressureD] = useState('');
-    const [patientBodyWeight, setPatientBodyWeight] = useState('');
-    const [patientAge, setPatientAge] = useState('');
+    const [bloodSugarLevel, setBloodSugarLevel] = useState(quizList.bloodSugarLevel ?? '');
+    const [bodyTemperature, setBodyTemperature] = useState(quizList.bodyTemperature ?? '');
+    const [arterialPressureS, setArterialPressureS] = useState(quizList.arterialPressureS ?? '');
+    const [arterialPressureD, setArterialPressureD] = useState(quizList.arterialPressureD ?? '');
+    const [patientBodyWeight, setPatientBodyWeight] = useState(quizList.patientBodyWeight ?? '');
+    const [patientAge, setPatientAge] = useState(quizList.patientAge ?? '');
 
-    const debouncedBloodSugarLevel = useDebounce(bloodSugarLevel, 500);
-    const debouncedBodyTemperature = useDebounce(bodyTemperature, 500);
-    const debouncedArterialPressureS = useDebounce(arterialPressureS, 500);
-    const debouncedArterialPressureD = useDebounce(arterialPressureD, 500);
-    const debouncedPatientBodyWeight = useDebounce(patientBodyWeight, 500);
-    const debouncedPatientAge = useDebounce(patientAge, 500);
+    // const debouncedBloodSugarLevel = useDebounce(bloodSugarLevel, 500);
+    // const debouncedBodyTemperature = useDebounce(bodyTemperature, 500);
+    // const debouncedArterialPressureS = useDebounce(arterialPressureS, 500);
+    // const debouncedArterialPressureD = useDebounce(arterialPressureD, 500);
+    // const debouncedPatientBodyWeight = useDebounce(patientBodyWeight, 500);
+    // const debouncedPatientAge = useDebounce(patientAge, 500);
 
     useMemo(() => {
         if (quizList) {
