@@ -74,7 +74,7 @@ export const StartPage = () => {
                 </button>
             </div>
             <Button disabled={!number || quizIsLoading || !!invalidMessage || !employeeID} onClick={onSubmitFormHandler}>Заполнить новый чек-лист</Button>
-            <Modal isVisible={isOpenClue} onClose={() => setIsOpenClue(false)} content={<p>Введите № бригады в формате №подстанции СМП/№бригады. Например, "03/05"</p>}/>
+            <Modal isVisible={isOpenClue} onClose={() => setIsOpenClue(false)} content={<p>Введите № бригады. Например, "15"</p>}/>
             <Modal isVisible={isOpenClue2} onClose={() => setIsOpenClue2(false)} content={<p>Введите идентификатор сотрудника. Например, "12345"</p>}/>
         </div>
     );
