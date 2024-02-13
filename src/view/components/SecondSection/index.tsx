@@ -7,17 +7,18 @@ import {useAppSelector, useThunks} from "../../../common/helpers/reduxHook";
 import {QuizThunks} from "../../../store/thunks/quiz.thunks";
 import {useDebounce} from "../../../common/helpers/useDebounceHook";
 import {QuizState} from "../../../store/reducers/quiz.reducer";
+import { RadioButtonFalse, RadioButtonTrue, RadioButtonUnknow } from '../../ui/RadioButtonWithoutSpan';
 
 export const SecondSection = () => {
     const { addQuizAnswerThunk } = useThunks(QuizThunks);
     const { quizList } = useAppSelector(QuizState);
 
     const [treatmentStarted, setTreatmentStarted] = useState<boolean>((quizList.treatmentStarted === 'true' ? true : quizList.treatmentStarted === 'false' ? false : false));
-    const [intravenousAccessEstablished, setIntravenousAccessEstablished] = useState<boolean>(quizList.intravenousAccessEstablished === 'true' ? true : quizList.intravenousAccessEstablished === 'false' ? false : false);
-    const [takesAnticoagulants, setTakesAnticoagulants] = useState<boolean>(quizList.takesAnticoagulants === 'true' ? true : quizList.takesAnticoagulants === 'false' ? false : false);
+    const [intravenousAccessEstablished, setIntravenousAccessEstablished] = useState<any>(quizList.intravenousAccessEstablished === 'true' ? 'true' : quizList.intravenousAccessEstablished === 'false' ? 'false' : 'false');
+    const [takesAnticoagulants, setTakesAnticoagulants] = useState<any>(quizList.takesAnticoagulants === 'true' ? 'true' : quizList.takesAnticoagulants === 'false' ? 'false' : 'unknow');
     const [deliveryTimeHh, setDeliveryTimeHh] = useState<string>('');
     const [deliveryTimeMm, setDeliveryTimeMm] = useState<string>('');
-    const [takeECG, setTakeECG] = useState<boolean>(quizList.takeECG === 'true' ? true : quizList.takeECG === 'false' ? false : false);
+    const [takeECG, setTakeECG] = useState<any>(quizList.takeECG === 'true' ? 'true' : quizList.takeECG === 'false' ? 'false' : 'false');
 
     const debouncedTreatmentStarted = useDebounce(treatmentStarted, 500);
     const debouncedIntravenousAccessEstablished = useDebounce(intravenousAccessEstablished, 500);
@@ -28,11 +29,11 @@ export const SecondSection = () => {
 
     useMemo(() => {
         if (quizList) {
-            setTreatmentStarted(quizList.treatmentStarted === 'true' ? true : quizList.treatmentStarted === 'false' ? false : false)
-            setIntravenousAccessEstablished(quizList.intravenousAccessEstablished === 'true' ? true : quizList.intravenousAccessEstablished === 'false' ? false : false)
-            setTakesAnticoagulants(quizList.takesAnticoagulants === 'true' ? true : quizList.takesAnticoagulants === 'false' ? false : false)
-            setTakeECG(quizList.takeECG === 'true' ? true : quizList.takeECG === 'false' ? false : false)
-            setDeliveryTimeHh(quizList.deliveryTimeHh ?? '')
+            setTreatmentStarted(quizList.treatmentStarted === 'true' ? true : quizList.treatmentStarted === 'false' ? false : false);
+            setIntravenousAccessEstablished(quizList.intravenousAccessEstablished === 'true' ? 'true' : quizList.intravenousAccessEstablished === 'false' ? 'false' : 'false');
+            setTakesAnticoagulants(quizList.takesAnticoagulants === 'true' ? 'true' : quizList.takesAnticoagulants === 'false' ? 'false' : 'unknow');
+            setTakeECG(quizList.takeECG === 'true' ? 'true' : quizList.takeECG === 'false' ? 'false' : 'false');
+            setDeliveryTimeHh(quizList.deliveryTimeHh ?? '');
             setDeliveryTimeMm(quizList.deliveryTimeMm ?? '')
         }
     }, [quizList])
@@ -91,24 +92,62 @@ export const SecondSection = () => {
             </div>
 
             <div className={s.inner}>
+
+            <table>
+                    <tbody>
+                        <tr className={s.tableRow}>
+                            <td className={s.checkbox}>
+                                <span className={s.title}>Установлен <strong>внутривенный доступ</strong></span> <br/><span className={s.subtitle}>(предпочтительно 2 канюли большого диаметра с портом)</span>
+                            </td>
+                            <td className={s.tdButton}>
+                                <RadioButtonTrue id={'1_1'} value={"true"} onChange={(str) => setIntravenousAccessEstablished(str)} name={"intravenousAccessEstablished"} currentValue={intravenousAccessEstablished} />
+                                <RadioButtonFalse id={'1_2'} value={"false"} onChange={(str) => setIntravenousAccessEstablished(str)} name={"intravenousAccessEstablished"} currentValue={intravenousAccessEstablished}/>
+                                {/* <RadioButtonUnknow id={'1_3'} value={"unknow"} onChange={(str) => setIntravenousAccessEstablished(str)} name={"intravenousAccessEstablished"} currentValue={intravenousAccessEstablished}/> */}
+                            </td>
+                        </tr>
+
+                        <tr className={s.tableRow}>
+                            <td className={s.checkbox}>
+                                <span className={s.title}>Пациент принимает <strong>антикоагулянты</strong></span>
+                            </td>
+                            <td className={s.tdButton}>
+                                <RadioButtonTrue id={'2_1'} value={"true"} onChange={(str) => setTakesAnticoagulants(str)} name={"takesAnticoagulants"} currentValue={takesAnticoagulants} />
+                                <RadioButtonFalse id={'2_2'} value={"false"} onChange={(str) => setTakesAnticoagulants(str)} name={"takesAnticoagulants"} currentValue={takesAnticoagulants}/>
+                                <RadioButtonUnknow id={'2_3'} value={"unknow"} onChange={(str) => setTakesAnticoagulants(str)} name={"takesAnticoagulants"} currentValue={takesAnticoagulants}/>
+                            </td>
+                        </tr>
+
+                        <tr className={s.tableRow}>
+                            <td className={s.checkbox}>
+                                <span className={s.title}>Снимите ЭКГ у пациента</span>
+                            </td>
+                            <td className={s.tdButton}>
+                                <RadioButtonTrue id={'3_1'} value={"true"} onChange={(str) => setTakeECG(str)} name={"takeECG"} currentValue={takeECG} />
+                                <RadioButtonFalse id={'3_2'} value={"false"} onChange={(str) => setTakeECG(str)} name={"takeECG"} currentValue={takeECG}/>
+                                {/* <RadioButtonUnknow id={'3_3'} value={"unknow"} onChange={(str) => setTakeECG(str)} name={"takeECG"} currentValue={takeECG}/> */}
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+{/* 
                 <CheckBox id={"2"} checked={intravenousAccessEstablished} onChange={(e) => setIntravenousAccessEstablished(e.target.checked)}>
                     <div className={s.checkbox}>
                         <span className={s.title}>Установлен <strong>внутривенный доступ</strong></span> <br/>
                         <span className={s.subtitle}>(предпочтительно 2 канюли большого диаметра с портом)</span>
                     </div>
-                </CheckBox>
-
+                </CheckBox> 
                 <CheckBox id={"3"} checked={takesAnticoagulants} onChange={(e) => setTakesAnticoagulants(e.target.checked)}>
                     <div className={s.checkbox}>
                         <span className={s.title}>Пациент принимает <strong>антикоагулянты</strong></span>
                     </div>
                 </CheckBox>
-
                 <CheckBox id={"4"} checked={takeECG} onChange={(e) => setTakeECG(e.target.checked)}>
                     <div className={s.checkbox}>
                         <span className={s.title}>Снимите ЭКГ у пациента</span>
                     </div>
                 </CheckBox>
+                */}
             </div>
         </div>
     );
