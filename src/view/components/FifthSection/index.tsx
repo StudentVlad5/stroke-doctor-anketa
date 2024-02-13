@@ -9,16 +9,18 @@ import {useDebounce} from "../../../common/helpers/useDebounceHook";
 import {useAppSelector, useThunks} from "../../../common/helpers/reduxHook";
 import {QuizThunks} from "../../../store/thunks/quiz.thunks";
 import {QuizState} from "../../../store/reducers/quiz.reducer";
+import { RadioButtonFalse, RadioButtonTrue, RadioButtonUnknow } from '../../ui/RadioButtonWithoutSpan';
 
 export const FifthSection = () => {
     const { addQuizAnswerThunk } = useThunks(QuizThunks);
     const { quizList } = useAppSelector(QuizState);
 
-    const [smallOperations, setSmallOperations] = useState<boolean>(quizList.smallOperations === 'true' ? true : quizList.smallOperations === 'false' ? false : false);
-    const [cardiovascularDiseases, setCardiovascularDiseases] = useState<boolean>(quizList.cardiovascularDiseases === 'true' ? true : quizList.cardiovascularDiseases === 'false' ? false : false);
-    const [acuteInfectiousDisease, setAcuteInfectiousDisease] = useState<boolean>(quizList.acuteInfectiousDisease === 'true' ? true : quizList.acuteInfectiousDisease === 'false' ? false : false);
-    const [hemorrhages, setHemorrhages] = useState<boolean>(quizList.hemorrhages === 'true' ? true : quizList.hemorrhages === 'false' ? false : false);
-    const [convulsions, setConvulsions] = useState<boolean>(quizList.convulsions === 'true' ? true : quizList.convulsions === 'false' ? false : false);
+    const [smallOperations, setSmallOperations] = useState<any>(quizList.smallOperations === 'true' ? 'true' : quizList.smallOperations === 'false' ? 'false' : 'unknow');
+    const [cardiovascularDiseases, setCardiovascularDiseases] = useState<any>(quizList.cardiovascularDiseases === 'true' ? 'true' : quizList.cardiovascularDiseases === 'false' ? 'false' : 'unknow');
+    const [acuteInfectiousDisease, setAcuteInfectiousDisease] = useState<any>(quizList.acuteInfectiousDisease === 'true' ? 'true' : quizList.acuteInfectiousDisease === 'false' ? 'false' : 'unknow');
+    const [hemorrhages, setHemorrhages] = useState<any>(quizList.hemorrhages === 'true' ? 'true' : quizList.hemorrhages === 'false' ? 'false' : 'unknow');
+    const [onmk, setOnmk] = useState<any>(quizList.onmk === 'true' ? 'true' : quizList.onmk === 'false' ? 'false' : 'unknow');
+    const [convulsions, setConvulsions] = useState<any>(quizList.convulsions === 'true' ? 'true' : quizList.convulsions === 'false' ? 'false' : 'unknow');
     const [hemorrhagicStroke, setHemorrhagicStroke] = useState<boolean>(quizList.hemorrhagicStroke === 'true' ? true : quizList.hemorrhagicStroke === 'false' ? false : false);
     const [SACStroke, setSACStroke] = useState<boolean>(quizList.SACStroke === 'true' ? true : quizList.SACStroke === 'false' ? false : false);
     const [ischemicStroke, setIschemicStroke] = useState<boolean>(quizList.ischemicStroke === 'true' ? true : quizList.ischemicStroke === 'false' ? false : false);
@@ -34,6 +36,7 @@ export const FifthSection = () => {
     const debouncedHemorrhagicStroke = useDebounce(hemorrhagicStroke, 500);
     const debouncedSACStroke = useDebounce(SACStroke, 500);
     const debouncedIschemicStroke = useDebounce(ischemicStroke, 500);
+    const debouncedIschemicOnmk = useDebounce(onmk, 500);
     // const debouncedMedicalStaffFullName = useDebounce(medicalStaffFullName, 500);
     // const debouncedEmployeeID = useDebounce(employeeID, 500);
 
@@ -44,14 +47,15 @@ export const FifthSection = () => {
 
     useMemo(() => {
         if (quizList) {
-            setSmallOperations(quizList.smallOperations === 'true' ? true : quizList.smallOperations === 'false' ? false : false)
-            setCardiovascularDiseases(quizList.cardiovascularDiseases === 'true' ? true : quizList.cardiovascularDiseases === 'false' ? false : false)
-            setAcuteInfectiousDisease(quizList.acuteInfectiousDisease === 'true' ? true : quizList.acuteInfectiousDisease === 'false' ? false : false)
-            setHemorrhages(quizList.hemorrhages === 'true' ? true : quizList.hemorrhages === 'false' ? false : false)
-            setConvulsions(quizList.convulsions === 'true' ? true : quizList.convulsions === 'false' ? false : false)
+            setSmallOperations(quizList.smallOperations === 'true' ? 'true' : quizList.smallOperations === 'false' ? 'false' : 'unknow')
+            setCardiovascularDiseases(quizList.cardiovascularDiseases === 'true' ? 'true' : quizList.cardiovascularDiseases === 'false' ? 'false' : 'unknow')
+            setAcuteInfectiousDisease(quizList.acuteInfectiousDisease === 'true' ? 'true' : quizList.acuteInfectiousDisease === 'false' ? 'false' : 'unknow')
+            setHemorrhages(quizList.hemorrhages === 'true' ? 'true' : quizList.hemorrhages === 'false' ? 'false' : 'unknow')
+            setConvulsions(quizList.convulsions === 'true' ? 'true' : quizList.convulsions === 'false' ? 'false' : 'unknow')
             setHemorrhagicStroke(quizList.hemorrhagicStroke === 'true' ? true : quizList.hemorrhagicStroke === 'false' ? false : false)
             setSACStroke(quizList.SACStroke === 'true' ? true : quizList.SACStroke === 'false' ? false : false)
             setIschemicStroke(quizList.ischemicStroke === 'true' ? true : quizList.ischemicStroke === 'false' ? false : false)
+            setOnmk(quizList.onmk === 'true' ? 'true' : quizList.onmk === 'false' ? 'false' : 'unknow')
             // setMedicalStaffFullName(quizList.medicalStaffFullName ?? '')
             // setEmployeeID(quizList.employeeID ?? '')
         }
@@ -68,6 +72,7 @@ export const FifthSection = () => {
                 hemorrhagicStroke: debouncedHemorrhagicStroke,
                 SACStroke: debouncedSACStroke,
                 ischemicStroke: debouncedIschemicStroke,
+                onmk: debouncedIschemicOnmk,
             }
         })
     }, [debouncedSmallOperations, debouncedCardiovascularDiseases, debouncedAcuteInfectiousDisease, debouncedHemorrhages, debouncedConvulsions, debouncedHemorrhagicStroke,
@@ -86,38 +91,108 @@ export const FifthSection = () => {
             <Title>Раздел 4: Соберите анамнез</Title>
 
             <div className={s.inner}>
-                <CheckBox id={"1"} checked={smallOperations} onChange={e => setSmallOperations(e.target.checked)}>
-                    <div className={s.checkbox}>
+
+                {/* <CheckBox id={"1"} checked={smallOperations} onChange={e => setSmallOperations(e.target.checked)}>
+                        <div className={s.checkbox}>
                         <span className={s.title}>Малые операции или инвазивные вмешательства в последние 10 дней</span>
                     </div>
                 </CheckBox>
-
                 <CheckBox id={"2"} checked={cardiovascularDiseases} onChange={e => setCardiovascularDiseases(e.target.checked)}>
                     <div className={s.checkbox}>
                         <span className={s.title}>Сердечно-сосудистые заболевания <br/> <small>(подострый бактериальный эндокардит, острый перикардит)</small></span>
                     </div>
                 </CheckBox>
-
                 <CheckBox id={"3"} checked={acuteInfectiousDisease} onChange={e => setAcuteInfectiousDisease(e.target.checked)}>
                     <div className={s.checkbox}>
                         <span className={s.title}>Острое инфекционное заболевание</span>
                     </div>
                 </CheckBox>
-
                 <CheckBox id={"4"} checked={hemorrhages} onChange={e => setHemorrhages(e.target.checked)}>
                     <div className={s.checkbox}>
                         <span className={s.title}>Кровоизлияния в ЖКТ и мочевыводящих путях не позднее 21 дня до инсульта</span>
                     </div>
                 </CheckBox>
-
                 <CheckBox id={"5"} checked={convulsions} onChange={e => setConvulsions(e.target.checked)}>
                     <div className={s.checkbox}>
                         <span className={s.title}>Судорожные приступы в дебюте заболевания <br/> (имеется связь с острой церебральной ишемией)</span>
                     </div>
                 </CheckBox>
+                */}
+
+
+            <table>
+                    <tbody>
+                        <tr className={s.tableRow}>
+                            <td className={s.checkbox}>
+                                <span className={s.title}>Малые операции или инвазивные вмешательства в последние 10 дней</span>
+                            </td>
+                            <td className={s.tdButton}>
+                                <RadioButtonTrue id={'1_1'} value={"true"} onChange={(str) => setSmallOperations(str)} name={"smallOperations"} currentValue={smallOperations} />
+                                <RadioButtonFalse id={'1_2'} value={"false"} onChange={(str) => setSmallOperations(str)} name={"smallOperations"} currentValue={smallOperations}/>
+                                <RadioButtonUnknow id={'1_3'} value={"unknow"} onChange={(str) => setSmallOperations(str)} name={"smallOperations"} currentValue={smallOperations}/>
+                            </td>
+                        </tr>
+
+                        <tr className={s.tableRow}>
+                            <td className={s.checkbox}>
+                                <span className={s.title}>Сердечно-сосудистые заболевания <br/> <small>(подострый бактериальный эндокардит, острый перикардит)</small></span>
+                            </td>
+                            <td className={s.tdButton}>
+                                <RadioButtonTrue id={'2_1'} value={"true"} onChange={(str) => setCardiovascularDiseases(str)} name={"cardiovascularDiseases"} currentValue={cardiovascularDiseases} />
+                                <RadioButtonFalse id={'2_2'} value={"false"} onChange={(str) => setCardiovascularDiseases(str)} name={"cardiovascularDiseases"} currentValue={cardiovascularDiseases}/>
+                                <RadioButtonUnknow id={'2_3'} value={"unknow"} onChange={(str) => setCardiovascularDiseases(str)} name={"cardiovascularDiseases"} currentValue={cardiovascularDiseases}/>
+                            </td>
+                        </tr>
+
+                        <tr className={s.tableRow}>
+                            <td className={s.checkbox}>
+                                <span className={s.title}>Острое инфекционное заболевание</span>
+                            </td>
+                            <td className={s.tdButton}>
+                                <RadioButtonTrue id={'3_1'} value={"true"} onChange={(str) => setAcuteInfectiousDisease(str)} name={"acuteInfectiousDisease"} currentValue={acuteInfectiousDisease} />
+                                <RadioButtonFalse id={'3_2'} value={"false"} onChange={(str) => setAcuteInfectiousDisease(str)} name={"acuteInfectiousDisease"} currentValue={acuteInfectiousDisease}/>
+                                <RadioButtonUnknow id={'3_3'} value={"unknow"} onChange={(str) => setAcuteInfectiousDisease(str)} name={"acuteInfectiousDisease"} currentValue={acuteInfectiousDisease}/>
+                            </td>
+                        </tr>
+
+                        <tr className={s.tableRow}>
+                            <td className={s.checkbox}>
+                                <span className={s.title}>Кровоизлияния в ЖКТ и мочевыводящих путях не позднее 21 дня до инсульта</span>
+                            </td>
+                            <td className={s.tdButton}>
+                                <RadioButtonTrue id={'4_1'} value={"true"} onChange={(str) => setHemorrhages(str)} name={"hemorrhages"} currentValue={hemorrhages} />
+                                <RadioButtonFalse id={'4_2'} value={"false"} onChange={(str) => setHemorrhages(str)} name={"hemorrhages"} currentValue={hemorrhages}/>
+                                <RadioButtonUnknow id={'4_3'} value={"unknow"} onChange={(str) => setHemorrhages(str)} name={"hemorrhages"} currentValue={hemorrhages}/>
+                            </td>
+                        </tr>
+
+                        <tr className={s.tableRow}>
+                            <td className={s.checkbox}>
+                                <span className={s.title}>Кровоизлияния в ЖКТ и мочевыводящих путях не позднее 21 дня до инсульта</span>
+                            </td>
+                            <td className={s.tdButton}>
+                                <RadioButtonTrue id={'5_1'} value={"true"} onChange={(str) => setConvulsions(str)} name={"convulsions"} currentValue={convulsions} />
+                                <RadioButtonFalse id={'5_2'} value={"false"} onChange={(str) => setConvulsions(str)} name={"convulsions"} currentValue={convulsions}/>
+                                <RadioButtonUnknow id={'5_3'} value={"unknow"} onChange={(str) => setConvulsions(str)} name={"convulsions"} currentValue={convulsions}/>
+                            </td>
+                        </tr>
+
+                        <tr className={s.tableRow}>
+                            <td className={s.checkbox}>
+                                <span className={s.title}>ОНМК ранее:</span>
+                            </td>
+                            <td className={s.tdButton}>
+                                <RadioButtonTrue id={'6_1'} value={"true"} onChange={(str) => setOnmk(str)} name={"onmk"} currentValue={onmk} />
+                                <RadioButtonFalse id={'6_2'} value={"false"} onChange={(str) => setOnmk(str)} name={"onmk"} currentValue={onmk}/>
+                                <RadioButtonUnknow id={'6_3'} value={"unknow"} onChange={(str) => setOnmk(str)} name={"onmk"} currentValue={onmk}/>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
 
                 <div className={s.whiteBox}>
-                    <span className={s.title}>ОНМК ранее:</span>
+                    <span className={s.title}></span>
                     <div className={s.checkboxWrapper}>
                         <CheckBox className={s.check} id={"6"} checked={hemorrhagicStroke} onChange={e => setHemorrhagicStroke(e.target.checked)}>Гемморагический</CheckBox>
                         <CheckBox className={s.check} id={"7"} checked={SACStroke} onChange={e => setSACStroke(e.target.checked)}>САК</CheckBox>

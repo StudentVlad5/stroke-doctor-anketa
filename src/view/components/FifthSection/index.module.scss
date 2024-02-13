@@ -2,6 +2,16 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
+  .tableRow{
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    @media (max-width: 800px) {
+    flex-wrap:nowrap;
+    }  
+  }
   .whiteBox {
     padding: 20px 10px;
 
@@ -58,6 +68,14 @@
     }
     .subtitle {
       font-size: 22px;
+    }
+  }
+  .tdButton{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    @media (max-width: 800px){
+      flex-direction: column;
     }
   }
   @media (max-width: 800px) {

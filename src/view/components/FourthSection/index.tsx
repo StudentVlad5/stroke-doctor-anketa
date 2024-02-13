@@ -52,7 +52,7 @@ export const FourthSection = () => {
             }
         })
     }, [debouncedIntracranialHemorrhages, debouncedMajorSurgeriesOrSevereInjuries, debouncedSurgicalInterventions, debouncedMyocardialInfarction, debouncedStroke, debouncedArterialPuncture]);
-console.log("intracranialHemorrhages", intracranialHemorrhages);
+
     return (
         <div className={s.FourthSection}>
             <Title>Раздел 4: Соберите анамнез</Title>
