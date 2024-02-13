@@ -1,12 +1,12 @@
 import s from './index.module.scss';
 import { Button } from "../../ui/Button";
-import { InputText } from "../../ui/InputText";
-import {useMemo, useState} from "react";
+// import { InputText } from "../../ui/InputText";
+import {useEffect, useMemo, useState} from "react";
 import { useAppSelector, useThunks } from "../../../common/helpers/reduxHook";
 import { QuizThunks } from "../../../store/thunks/quiz.thunks";
 import { QuizState } from "../../../store/reducers/quiz.reducer";
 import Skeleton from "../../ui/Skeleton";
-import {useLocation, useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import ClueImg from '../../../assets/images/clue.png'
 import {Modal} from "../../ui/Modal";
 import { IMaskInput } from 'react-imask';
@@ -23,6 +23,10 @@ export const StartPage = () => {
     const [isOpenClue, setIsOpenClue] = useState<boolean>(false);
     const [isOpenClue2, setIsOpenClue2] = useState<boolean>(false);
     const [invalidMessage, setInvalidMessage] = useState('');
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      }, []);
 
     useMemo(() => {
         if (employeeID && employeeID.length !== 5) setInvalidMessage('Введите 5 символов')

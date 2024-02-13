@@ -13,12 +13,12 @@ export const SecondSection = () => {
     const { addQuizAnswerThunk } = useThunks(QuizThunks);
     const { quizList } = useAppSelector(QuizState);
 
-    const [treatmentStarted, setTreatmentStarted] = useState<boolean>((quizList.treatmentStarted === 'true' ? true : quizList.treatmentStarted === 'false' ? false : false));
-    const [intravenousAccessEstablished, setIntravenousAccessEstablished] = useState<any>(quizList.intravenousAccessEstablished === 'true' ? 'true' : quizList.intravenousAccessEstablished === 'false' ? 'false' : 'false');
-    const [takesAnticoagulants, setTakesAnticoagulants] = useState<any>(quizList.takesAnticoagulants === 'true' ? 'true' : quizList.takesAnticoagulants === 'false' ? 'false' : 'unknow');
+    const [treatmentStarted, setTreatmentStarted] = useState<boolean>((quizList?.treatmentStarted === 'true' ? true : quizList?.treatmentStarted === 'false' ? false : false));
+    const [intravenousAccessEstablished, setIntravenousAccessEstablished] = useState<any>(quizList?.intravenousAccessEstablished === 'true' ? 'true' : quizList?.intravenousAccessEstablished === 'false' ? 'false' : 'false');
+    const [takesAnticoagulants, setTakesAnticoagulants] = useState<any>(quizList?.takesAnticoagulants === 'true' ? 'true' : quizList?.takesAnticoagulants === 'false' ? 'false' : 'unknow');
     const [deliveryTimeHh, setDeliveryTimeHh] = useState<string>('');
     const [deliveryTimeMm, setDeliveryTimeMm] = useState<string>('');
-    const [takeECG, setTakeECG] = useState<any>(quizList.takeECG === 'true' ? 'true' : quizList.takeECG === 'false' ? 'false' : 'false');
+    const [takeECG, setTakeECG] = useState<any>(quizList?.takeECG === 'true' ? 'true' : quizList?.takeECG === 'false' ? 'false' : 'false');
 
     const debouncedTreatmentStarted = useDebounce(treatmentStarted, 500);
     const debouncedIntravenousAccessEstablished = useDebounce(intravenousAccessEstablished, 500);
@@ -29,12 +29,12 @@ export const SecondSection = () => {
 
     useMemo(() => {
         if (quizList) {
-            setTreatmentStarted(quizList.treatmentStarted === 'true' ? true : quizList.treatmentStarted === 'false' ? false : false);
-            setIntravenousAccessEstablished(quizList.intravenousAccessEstablished === 'true' ? 'true' : quizList.intravenousAccessEstablished === 'false' ? 'false' : 'false');
-            setTakesAnticoagulants(quizList.takesAnticoagulants === 'true' ? 'true' : quizList.takesAnticoagulants === 'false' ? 'false' : 'unknow');
-            setTakeECG(quizList.takeECG === 'true' ? 'true' : quizList.takeECG === 'false' ? 'false' : 'false');
-            setDeliveryTimeHh(quizList.deliveryTimeHh ?? '');
-            setDeliveryTimeMm(quizList.deliveryTimeMm ?? '')
+            setTreatmentStarted(quizList?.treatmentStarted === 'true' ? true : quizList?.treatmentStarted === 'false' ? false : false);
+            setIntravenousAccessEstablished(quizList?.intravenousAccessEstablished === 'true' ? 'true' : quizList?.intravenousAccessEstablished === 'false' ? 'false' : 'false');
+            setTakesAnticoagulants(quizList?.takesAnticoagulants === 'true' ? 'true' : quizList?.takesAnticoagulants === 'false' ? 'false' : 'unknow');
+            setTakeECG(quizList?.takeECG === 'true' ? 'true' : quizList?.takeECG === 'false' ? 'false' : 'false');
+            setDeliveryTimeHh(quizList?.deliveryTimeHh ?? '');
+            setDeliveryTimeMm(quizList?.deliveryTimeMm ?? '')
         }
     }, [quizList])
 
