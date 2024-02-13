@@ -56,7 +56,7 @@ export const StartPage = () => {
                 {/*<InputText placeholder={"Введите № бригады СМП"} onChange={onChange}/>*/}
                 <IMaskInput className={s.textInput} value={number} inputMode='numeric'
                             onChange={onChange}
-                            placeholder='Введите № бригады СМП' mask={"00/00"}/>
+                            placeholder='Введите № бригады СМП' mask={"00"}/>
                 <button className={s.clue} onClick={() => setIsOpenClue(true)}>
                     <img src={ClueImg} alt=""/>
                 </button>
