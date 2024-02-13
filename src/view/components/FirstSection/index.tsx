@@ -63,18 +63,20 @@ export const FirstSection = () => {
                 {/*<InputText title={"ИИН пациента"}
                            onBlur={onBlurHandler}
                            onChange={(e) => setPatientINN(e.target.value)} value={patientINN}/>*/}
-                <div className={s.sex}>
-                    <span className={s.title}>Пол пациента</span>
-                    <div className={s.sexInner}>
-                        <RadioButton id={'15'} value={"Мужской"} onChange={(str) => setSex(str)} name={"sex"} currentValue={sex} />
-                        <RadioButton id={'16'} value={"Женский"} onChange={(str) => setSex(str)} name={"sex"} currentValue={sex}/>
-                    </div>
-                </div>
+          
                 <InputNumber title={"ИИН пациента"} invalidMessage={invalidMessage} inputMode={"numeric"}
                              onChange={(e) => setPatientINN(e.target.value)} value={patientINN} minLength={12} maxLength={12} onBlur={() => onBlurHandler('patientINN', patientINN)} />
 
                 <Textarea title={"Визуальное описание - при отсутствии личных данных"}
                           onChange={(e) => setVisualDescription(e.target.value)} value={visualDescription} onBlur={() => onBlurHandler('visualDescription', visualDescription)} />
+
+                <div className={s.sex}>
+                    <span className={s.title}>Пол пациента</span>
+                    <div className={s.sexInner}>
+                        <RadioButton id={'15'} value={"М"} onChange={(str) => setSex(str)} name={"sex"} currentValue={sex} />
+                        <RadioButton id={'16'} value={"Ж"} onChange={(str) => setSex(str)} name={"sex"} currentValue={sex}/>
+                    </div>
+                </div>
             </div>
         </div>
     );
