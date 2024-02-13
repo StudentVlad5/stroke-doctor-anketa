@@ -2,9 +2,9 @@ import s from './index.module.scss';
 import { Title } from "../../ui/Title";
 import {useEffect, useMemo, useState} from "react";
 import { CheckBox } from "../../ui/CheckBox";
-import { InputTime } from "../../ui/InputTime";
-import { InputText } from "../../ui/InputText";
-import { InputNumber } from "../../ui/InputNumber";
+// import { InputTime } from "../../ui/InputTime";
+// import { InputText } from "../../ui/InputText";
+// import { InputNumber } from "../../ui/InputNumber";
 import {useDebounce} from "../../../common/helpers/useDebounceHook";
 import {useAppSelector, useThunks} from "../../../common/helpers/reduxHook";
 import {QuizThunks} from "../../../store/thunks/quiz.thunks";
@@ -14,17 +14,17 @@ export const FifthSection = () => {
     const { addQuizAnswerThunk } = useThunks(QuizThunks);
     const { quizList } = useAppSelector(QuizState);
 
-    const [smallOperations, setSmallOperations] = useState<boolean>(false);
-    const [cardiovascularDiseases, setCardiovascularDiseases] = useState<boolean>(false);
-    const [acuteInfectiousDisease, setAcuteInfectiousDisease] = useState<boolean>(false);
-    const [hemorrhages, setHemorrhages] = useState<boolean>(false);
-    const [convulsions, setConvulsions] = useState<boolean>(false);
-    const [hemorrhagicStroke, setHemorrhagicStroke] = useState<boolean>(false);
-    const [SACStroke, setSACStroke] = useState<boolean>(false);
-    const [ischemicStroke, setIschemicStroke] = useState<boolean>(false);
-    const [medicalStaffFullName, setMedicalStaffFullName] = useState<string>('');
-    const [employeeID, setEmployeeID] = useState<string>('');
-    const [invalidMessage, setInvalidMessage] = useState('');
+    const [smallOperations, setSmallOperations] = useState<boolean>(quizList.smallOperations === 'true' ? true : quizList.smallOperations === 'false' ? false : false);
+    const [cardiovascularDiseases, setCardiovascularDiseases] = useState<boolean>(quizList.cardiovascularDiseases === 'true' ? true : quizList.cardiovascularDiseases === 'false' ? false : false);
+    const [acuteInfectiousDisease, setAcuteInfectiousDisease] = useState<boolean>(quizList.acuteInfectiousDisease === 'true' ? true : quizList.acuteInfectiousDisease === 'false' ? false : false);
+    const [hemorrhages, setHemorrhages] = useState<boolean>(quizList.hemorrhages === 'true' ? true : quizList.hemorrhages === 'false' ? false : false);
+    const [convulsions, setConvulsions] = useState<boolean>(quizList.convulsions === 'true' ? true : quizList.convulsions === 'false' ? false : false);
+    const [hemorrhagicStroke, setHemorrhagicStroke] = useState<boolean>(quizList.hemorrhagicStroke === 'true' ? true : quizList.hemorrhagicStroke === 'false' ? false : false);
+    const [SACStroke, setSACStroke] = useState<boolean>(quizList.SACStroke === 'true' ? true : quizList.SACStroke === 'false' ? false : false);
+    const [ischemicStroke, setIschemicStroke] = useState<boolean>(quizList.ischemicStroke === 'true' ? true : quizList.ischemicStroke === 'false' ? false : false);
+    // const [medicalStaffFullName, setMedicalStaffFullName] = useState<string>('');
+    // const [employeeID, setEmployeeID] = useState<string>('');
+    // const [invalidMessage, setInvalidMessage] = useState('');
 
     const debouncedSmallOperations = useDebounce(smallOperations, 500);
     const debouncedCardiovascularDiseases = useDebounce(cardiovascularDiseases, 500);
@@ -34,13 +34,13 @@ export const FifthSection = () => {
     const debouncedHemorrhagicStroke = useDebounce(hemorrhagicStroke, 500);
     const debouncedSACStroke = useDebounce(SACStroke, 500);
     const debouncedIschemicStroke = useDebounce(ischemicStroke, 500);
-    const debouncedMedicalStaffFullName = useDebounce(medicalStaffFullName, 500);
-    const debouncedEmployeeID = useDebounce(employeeID, 500);
+    // const debouncedMedicalStaffFullName = useDebounce(medicalStaffFullName, 500);
+    // const debouncedEmployeeID = useDebounce(employeeID, 500);
 
-    useMemo(() => {
-        if (employeeID && employeeID.length !== 5) setInvalidMessage('Введите 5 символов')
-        else setInvalidMessage('')
-    }, [employeeID])
+    // useMemo(() => {
+    //     if (employeeID && employeeID.length !== 5) setInvalidMessage('Введите 5 символов')
+    //     else setInvalidMessage('')
+    // }, [employeeID])
 
     useMemo(() => {
         if (quizList) {

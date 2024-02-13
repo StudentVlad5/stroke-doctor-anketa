@@ -45,7 +45,8 @@ export const QuizThunks = {
                     "Content-Type": "application/json",
                 },
             })
-
+            const res = await response.json();
+            dispatch(QuizActions.setQuizListAction(res.normal))
         } catch (e) {
             console.log(e)
         } finally {

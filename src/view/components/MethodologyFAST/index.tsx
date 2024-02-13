@@ -2,11 +2,11 @@ import s from './index.module.scss';
 import { Title } from "../../ui/Title";
 import { CheckBox } from "../../ui/CheckBox";
 import {InputTime} from "../../ui/InputTime";
-import {useEffect, useMemo, useState} from "react";
-import {log} from "util";
+import {useEffect, useState} from "react";
+// import {log} from "util";
 import {useAppSelector, useThunks} from "../../../common/helpers/reduxHook";
 import {QuizThunks} from "../../../store/thunks/quiz.thunks";
-import {useDebounce} from "../../../common/helpers/useDebounceHook";
+// import {useDebounce} from "../../../common/helpers/useDebounceHook";
 import {QuizState} from "../../../store/reducers/quiz.reducer";
 
 export const MethodologyFAST = () => {
@@ -20,37 +20,45 @@ export const MethodologyFAST = () => {
     const [firstSymptomsTimeHh, setFirstSymptomsTimeHh] = useState<string>('');
     const [firstSymptomsTimeMm, setFirstSymptomsTimeMm] = useState<string>('');
 
-    const debouncedSaggingFace = useDebounce(saggingFace, 500);
-    const debouncedHandDisplacement = useDebounce(handDisplacement, 500);
-    const debouncedSpeechDisorders = useDebounce(speechDisorders, 500);
-    const debouncedFirstSymptomsTimeHh = useDebounce(firstSymptomsTimeHh, 500);
-    const debouncedFirstSymptomsTimeMm = useDebounce(firstSymptomsTimeMm, 500);
+    // const debouncedSaggingFace = useDebounce(saggingFace, 500);
+    // const debouncedHandDisplacement = useDebounce(handDisplacement, 500);
+    // const debouncedSpeechDisorders = useDebounce(speechDisorders, 500);
+    // const debouncedFirstSymptomsTimeHh = useDebounce(firstSymptomsTimeHh, 500);
+    // const debouncedFirstSymptomsTimeMm = useDebounce(firstSymptomsTimeMm, 500);
 
     const onChangeHandler = (e: any, setValue: any) => {
         setValue(e.target.checked)
     }
 
-    useMemo(() => {
-        if (quizList) {
-            setSaggingFace(quizList.saggingFace === 'true' ? true : quizList.saggingFace === 'false' ? false : false)
-            setHandDisplacement(quizList.handDisplacement === 'true' ? true : quizList.handDisplacement === 'false' ? false : false)
-            setSpeechDisorders(quizList.speechDisorders === 'true' ? true : quizList.speechDisorders === 'false' ? false : false)
-            setFirstSymptomsTimeHh(quizList.firstSymptomsTimeHh ?? '')
-            setFirstSymptomsTimeMm(quizList.firstSymptomsTimeMm ?? '')
-        }
-    }, [quizList])
-
     useEffect(() => {
-        addQuizAnswerThunk({
-            params: {
-                saggingFace: debouncedSaggingFace,
-                handDisplacement: debouncedHandDisplacement,
-                speechDisorders: debouncedSpeechDisorders,
-                // firstSymptomsTimeHh: debouncedFirstSymptomsTimeHh,
-                // firstSymptomsTimeMm: debouncedFirstSymptomsTimeMm,
-            }
-        })
-    }, [debouncedSaggingFace, debouncedHandDisplacement, debouncedSpeechDisorders]);
+        quizList?.saggingFace ?  setSaggingFace(JSON.parse(quizList?.saggingFace)) : setSaggingFace(false);
+        quizList?.handDisplacement ?  setHandDisplacement(JSON.parse(quizList?.handDisplacement)) : setHandDisplacement(false);
+        quizList?.speechDisorders ?  setSpeechDisorders(JSON.parse(quizList?.speechDisorders)) : setSpeechDisorders(false);
+        quizList?.firstSymptomsTimeHh ?  setFirstSymptomsTimeHh(quizList?.firstSymptomsTimeHh) : setFirstSymptomsTimeHh("");
+        quizList?.firstSymptomsTimeMm ?  setFirstSymptomsTimeMm(quizList?.firstSymptomsTimeMm) : setFirstSymptomsTimeMm("");
+    }, [quizList?.firstSymptomsTimeHh, quizList?.firstSymptomsTimeMm, quizList?.handDisplacement, quizList?.saggingFace, quizList?.speechDisorders])
+
+    // useMemo(() => {
+    //     if (quizList) {
+    //         setSaggingFace(quizList.saggingFace === 'true' ? true : quizList.saggingFace === 'false' ? false : false)
+    //         setHandDisplacement(quizList.handDisplacement === 'true' ? true : quizList.handDisplacement === 'false' ? false : false)
+    //         setSpeechDisorders(quizList.speechDisorders === 'true' ? true : quizList.speechDisorders === 'false' ? false : false)
+    //         setFirstSymptomsTimeHh(quizList.firstSymptomsTimeHh ?? '')
+    //         setFirstSymptomsTimeMm(quizList.firstSymptomsTimeMm ?? '')
+    //     }
+    // }, [quizList])
+
+    // useEffect(() => {
+    //     addQuizAnswerThunk({
+    //         params: {
+    //             saggingFace,
+    //             handDisplacement,
+    //             speechDisorders,
+    //             // firstSymptomsTimeHh: debouncedFirstSymptomsTimeHh,
+    //             // firstSymptomsTimeMm: debouncedFirstSymptomsTimeMm,
+    //         }
+    //     })
+    // }, [saggingFace, handDisplacement, speechDisorders]);
 
 /*    useEffect(() => {
         // localStorage.setItem('start_time', `${debouncedFirstSymptomsTimeHh}:${debouncedFirstSymptomsTimeMm}`)
@@ -78,15 +86,15 @@ export const MethodologyFAST = () => {
             <div className={s.inner}>
                 <div className={s.checkBoxBlock}>
 
-                    <CheckBox id={"1"} checked={saggingFace} onChange={(e) => onChangeHandler(e, setSaggingFace)}>
+                    <CheckBox id={"1"} checked={saggingFace} onChange={(e) => {onChangeHandler(e, setSaggingFace); onBlurHandler("saggingFace", e.target.checked)}}>
                         <span className={s.title}>Провисание на лице</span>
                     </CheckBox>
 
-                    <CheckBox id={"2"} checked={handDisplacement} onChange={(e) => onChangeHandler(e, setHandDisplacement)}>
+                    <CheckBox id={"2"} checked={handDisplacement} onChange={(e) =>{ onChangeHandler(e, setHandDisplacement); onBlurHandler("handDisplacement", e.target.checked)}}>
                         <span className={s.title}>Смещение рук</span>
                     </CheckBox>
 
-                    <CheckBox id={"3"} checked={speechDisorders} onChange={(e) => onChangeHandler(e, setSpeechDisorders)}>
+                    <CheckBox id={"3"} checked={speechDisorders} onChange={(e) =>{ onChangeHandler(e, setSpeechDisorders);  onBlurHandler("speechDisorders", e.target.checked)}}>
                         <span className={s.title}>Нарушения речи</span>
                     </CheckBox>
                 </div>

@@ -12,13 +12,12 @@ import {RadioButton} from "../../ui/RadioButton";
 
 export const FirstSection = () => {
     const { addQuizAnswerThunk } = useThunks(QuizThunks);
-    const { quizList, quizIsLoading } = useAppSelector(QuizState);
-
-    const [patientFullName, setPatientFullName] = useState<string>('');
-    const [patientINN, setPatientINN] = useState<string>('');
-    const [visualDescription, setVisualDescription] = useState<string>('');
+    const { quizList } = useAppSelector(QuizState);
+    const [patientFullName, setPatientFullName] = useState<string>(quizList?.patientFullName ? quizList.patientFullName : '');
+    const [patientINN, setPatientINN] = useState<string>(quizList?.patientINN ? quizList.patientINN : '');
+    const [visualDescription, setVisualDescription] = useState<string>(quizList?.visualDescription ? quizList.visualDescription : '');
     const [invalidMessage, setInvalidMessage] = useState('');
-    const [sex, setSex] = useState('')
+    const [sex, setSex] = useState(quizList?.patientSex ? quizList.patientSex : '');
 
     const debouncedSex = useDebounce(sex, 200);
 
@@ -45,11 +44,12 @@ export const FirstSection = () => {
     }, [quizList]);
 
     useEffect(() => {
+        if(debouncedSex !== ""){
         addQuizAnswerThunk({
             params: {
                 patientSex: debouncedSex,
             }
-        })
+        })}
     }, [debouncedSex]);
 
     return (
@@ -66,7 +66,7 @@ export const FirstSection = () => {
                 <div className={s.sex}>
                     <span className={s.title}>Пол пациента</span>
                     <div className={s.sexInner}>
-                        <RadioButton id={'15'} value={"Мужской"} onChange={(str) => setSex(str)} name={"sex"} currentValue={sex}/>
+                        <RadioButton id={'15'} value={"Мужской"} onChange={(str) => setSex(str)} name={"sex"} currentValue={sex} />
                         <RadioButton id={'16'} value={"Женский"} onChange={(str) => setSex(str)} name={"sex"} currentValue={sex}/>
                     </div>
                 </div>

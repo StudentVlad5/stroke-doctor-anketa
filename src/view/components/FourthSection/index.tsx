@@ -1,7 +1,7 @@
 import s from './index.module.scss';
 import { CheckBox } from "../../ui/CheckBox";
 import { Title } from "../../ui/Title";
-import {InputTime} from "../../ui/InputTime";
+// import {InputTime} from "../../ui/InputTime";
 import {useEffect, useMemo, useState} from "react";
 import {useDebounce} from "../../../common/helpers/useDebounceHook";
 import {useAppSelector, useThunks} from "../../../common/helpers/reduxHook";
@@ -12,12 +12,12 @@ export const FourthSection = () => {
     const { addQuizAnswerThunk } = useThunks(QuizThunks);
     const { quizList } = useAppSelector(QuizState);
 
-    const [intracranialHemorrhages, setIntracranialHemorrhages] = useState<boolean>(false);
-    const [majorSurgeriesOrSevereInjuries, setMajorSurgeriesOrSevereInjuries] = useState<boolean>(false);
-    const [surgicalInterventions, setSurgicalInterventions] = useState<boolean>(false);
-    const [myocardialInfarction, setMyocardialInfarction] = useState<boolean>(false);
-    const [stroke, setStroke] = useState<boolean>(false);
-    const [arterialPuncture, setArterialPuncture] = useState<boolean>(false);
+    const [intracranialHemorrhages, setIntracranialHemorrhages] = useState<boolean>(quizList.intracranialHemorrhages === 'true' ? true : quizList.intracranialHemorrhages === 'false' ? false : false);
+    const [majorSurgeriesOrSevereInjuries, setMajorSurgeriesOrSevereInjuries] = useState<boolean>(quizList.majorSurgeriesOrSevereInjuries === 'true' ? true : quizList.majorSurgeriesOrSevereInjuries === 'false' ? false : false);
+    const [surgicalInterventions, setSurgicalInterventions] = useState<boolean>(quizList.surgicalInterventions === 'true' ? true : quizList.surgicalInterventions === 'false' ? false : false);
+    const [myocardialInfarction, setMyocardialInfarction] = useState<boolean>(quizList.myocardialInfarction === 'true' ? true : quizList.myocardialInfarction === 'false' ? false : false);
+    const [stroke, setStroke] = useState<boolean>(quizList.stroke === 'true' ? true : quizList.stroke === 'false' ? false : false);
+    const [arterialPuncture, setArterialPuncture] = useState<boolean>(quizList.arterialPuncture === 'true' ? true : quizList.arterialPuncture === 'false' ? false : false);
 
     const debouncedIntracranialHemorrhages = useDebounce(intracranialHemorrhages, 500);
     const debouncedMajorSurgeriesOrSevereInjuries = useDebounce(majorSurgeriesOrSevereInjuries, 500);
