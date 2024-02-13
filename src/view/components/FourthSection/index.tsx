@@ -15,12 +15,12 @@ export const FourthSection = () => {
     const { addQuizAnswerThunk } = useThunks(QuizThunks);
     const { quizList } = useAppSelector(QuizState);
 
-    const [intracranialHemorrhages, setIntracranialHemorrhages] = useState<any>(quizList.intracranialHemorrhages === 'true' ? 'true' : quizList.intracranialHemorrhages === 'false' ? 'false' : 'unknow');
-    const [majorSurgeriesOrSevereInjuries, setMajorSurgeriesOrSevereInjuries] = useState<any>(quizList.majorSurgeriesOrSevereInjuries === 'true' ? 'true' : quizList.majorSurgeriesOrSevereInjuries === 'false' ? 'false' : 'unknow');
-    const [surgicalInterventions, setSurgicalInterventions] = useState<any>(quizList.surgicalInterventions === 'true' ? 'true' : quizList.surgicalInterventions === 'false' ? 'false' : 'unknow');
-    const [myocardialInfarction, setMyocardialInfarction] = useState<any>(quizList.myocardialInfarction === 'true' ? 'true' : quizList.myocardialInfarction === 'false' ? 'false' : 'unknow');
-    const [stroke, setStroke] = useState<any>(quizList.stroke === 'true' ? 'true' : quizList.stroke === 'false' ? 'false' : 'unknow');
-    const [arterialPuncture, setArterialPuncture] = useState<any>(quizList.arterialPuncture === 'true' ? 'true' : quizList.arterialPuncture === 'false' ? 'false' : 'unknow');
+    const [intracranialHemorrhages, setIntracranialHemorrhages] = useState<any>(quizList?.intracranialHemorrhages === 'true' ? 'true' : quizList?.intracranialHemorrhages === 'false' ? 'false' : 'unknow');
+    const [majorSurgeriesOrSevereInjuries, setMajorSurgeriesOrSevereInjuries] = useState<any>(quizList?.majorSurgeriesOrSevereInjuries === 'true' ? 'true' : quizList?.majorSurgeriesOrSevereInjuries === 'false' ? 'false' : 'unknow');
+    const [surgicalInterventions, setSurgicalInterventions] = useState<any>(quizList?.surgicalInterventions === 'true' ? 'true' : quizList?.surgicalInterventions === 'false' ? 'false' : 'unknow');
+    const [myocardialInfarction, setMyocardialInfarction] = useState<any>(quizList?.myocardialInfarction === 'true' ? 'true' : quizList?.myocardialInfarction === 'false' ? 'false' : 'unknow');
+    const [stroke, setStroke] = useState<any>(quizList?.stroke === 'true' ? 'true' : quizList?.stroke === 'false' ? 'false' : 'unknow');
+    const [arterialPuncture, setArterialPuncture] = useState<any>(quizList?.arterialPuncture === 'true' ? 'true' : quizList?.arterialPuncture === 'false' ? 'false' : 'unknow');
 
     const debouncedIntracranialHemorrhages = useDebounce(intracranialHemorrhages, 500);
     const debouncedMajorSurgeriesOrSevereInjuries = useDebounce(majorSurgeriesOrSevereInjuries, 500);
@@ -31,12 +31,12 @@ export const FourthSection = () => {
 
     useMemo(() => {
         if (quizList) {
-            setIntracranialHemorrhages(quizList.intracranialHemorrhages === 'true' ? 'true' : quizList.intracranialHemorrhages === 'false' ? 'false' : 'unknow')
-            setMajorSurgeriesOrSevereInjuries(quizList.majorSurgeriesOrSevereInjuries === 'true' ? 'true' : quizList.majorSurgeriesOrSevereInjuries === 'false' ? 'false' : 'unknow')
-            setSurgicalInterventions(quizList.surgicalInterventions === 'true' ? 'true' : quizList.surgicalInterventions === 'false' ? 'false' : 'unknow')
-            setMyocardialInfarction(quizList.myocardialInfarction === 'true' ? 'true' : quizList.myocardialInfarction === 'false' ? 'false' : 'unknow')
-            setStroke(quizList.stroke === 'true' ? 'true' : quizList.stroke === 'false' ? 'false' : 'unknow')
-            setArterialPuncture(quizList.arterialPuncture === 'true' ? 'true' : quizList.arterialPuncture === 'false' ? 'false' : 'unknow')
+            setIntracranialHemorrhages(quizList?.intracranialHemorrhages === 'true' ? 'true' : quizList?.intracranialHemorrhages === 'false' ? 'false' : 'unknow')
+            setMajorSurgeriesOrSevereInjuries(quizList?.majorSurgeriesOrSevereInjuries === 'true' ? 'true' : quizList?.majorSurgeriesOrSevereInjuries === 'false' ? 'false' : 'unknow')
+            setSurgicalInterventions(quizList?.surgicalInterventions === 'true' ? 'true' : quizList?.surgicalInterventions === 'false' ? 'false' : 'unknow')
+            setMyocardialInfarction(quizList?.myocardialInfarction === 'true' ? 'true' : quizList?.myocardialInfarction === 'false' ? 'false' : 'unknow')
+            setStroke(quizList?.stroke === 'true' ? 'true' : quizList?.stroke === 'false' ? 'false' : 'unknow')
+            setArterialPuncture(quizList?.arterialPuncture === 'true' ? 'true' : quizList?.arterialPuncture === 'false' ? 'false' : 'unknow')
         }
     }, [quizList])
 

@@ -15,15 +15,15 @@ export const FifthSection = () => {
     const { addQuizAnswerThunk } = useThunks(QuizThunks);
     const { quizList } = useAppSelector(QuizState);
 
-    const [smallOperations, setSmallOperations] = useState<any>(quizList.smallOperations === 'true' ? 'true' : quizList.smallOperations === 'false' ? 'false' : 'unknow');
-    const [cardiovascularDiseases, setCardiovascularDiseases] = useState<any>(quizList.cardiovascularDiseases === 'true' ? 'true' : quizList.cardiovascularDiseases === 'false' ? 'false' : 'unknow');
-    const [acuteInfectiousDisease, setAcuteInfectiousDisease] = useState<any>(quizList.acuteInfectiousDisease === 'true' ? 'true' : quizList.acuteInfectiousDisease === 'false' ? 'false' : 'unknow');
-    const [hemorrhages, setHemorrhages] = useState<any>(quizList.hemorrhages === 'true' ? 'true' : quizList.hemorrhages === 'false' ? 'false' : 'unknow');
-    const [onmk, setOnmk] = useState<any>(quizList.onmk === 'true' ? 'true' : quizList.onmk === 'false' ? 'false' : 'unknow');
-    const [convulsions, setConvulsions] = useState<any>(quizList.convulsions === 'true' ? 'true' : quizList.convulsions === 'false' ? 'false' : 'unknow');
-    const [hemorrhagicStroke, setHemorrhagicStroke] = useState<boolean>(quizList.hemorrhagicStroke === 'true' ? true : quizList.hemorrhagicStroke === 'false' ? false : false);
-    const [SACStroke, setSACStroke] = useState<boolean>(quizList.SACStroke === 'true' ? true : quizList.SACStroke === 'false' ? false : false);
-    const [ischemicStroke, setIschemicStroke] = useState<boolean>(quizList.ischemicStroke === 'true' ? true : quizList.ischemicStroke === 'false' ? false : false);
+    const [smallOperations, setSmallOperations] = useState<any>(quizList?.smallOperations === 'true' ? 'true' : quizList?.smallOperations === 'false' ? 'false' : 'unknow');
+    const [cardiovascularDiseases, setCardiovascularDiseases] = useState<any>(quizList?.cardiovascularDiseases === 'true' ? 'true' : quizList?.cardiovascularDiseases === 'false' ? 'false' : 'unknow');
+    const [acuteInfectiousDisease, setAcuteInfectiousDisease] = useState<any>(quizList?.acuteInfectiousDisease === 'true' ? 'true' : quizList?.acuteInfectiousDisease === 'false' ? 'false' : 'unknow');
+    const [hemorrhages, setHemorrhages] = useState<any>(quizList?.hemorrhages === 'true' ? 'true' : quizList?.hemorrhages === 'false' ? 'false' : 'unknow');
+    const [onmk, setOnmk] = useState<any>(quizList?.onmk === 'true' ? 'true' : quizList?.onmk === 'false' ? 'false' : 'unknow');
+    const [convulsions, setConvulsions] = useState<any>(quizList?.convulsions === 'true' ? 'true' : quizList?.convulsions === 'false' ? 'false' : 'unknow');
+    const [hemorrhagicStroke, setHemorrhagicStroke] = useState<boolean>(quizList?.hemorrhagicStroke === 'true' ? true : quizList?.hemorrhagicStroke === 'false' ? false : false);
+    const [SACStroke, setSACStroke] = useState<boolean>(quizList?.SACStroke === 'true' ? true : quizList?.SACStroke === 'false' ? false : false);
+    const [ischemicStroke, setIschemicStroke] = useState<boolean>(quizList?.ischemicStroke === 'true' ? true : quizList?.ischemicStroke === 'false' ? false : false);
     // const [medicalStaffFullName, setMedicalStaffFullName] = useState<string>('');
     // const [employeeID, setEmployeeID] = useState<string>('');
     // const [invalidMessage, setInvalidMessage] = useState('');
@@ -47,15 +47,15 @@ export const FifthSection = () => {
 
     useMemo(() => {
         if (quizList) {
-            setSmallOperations(quizList.smallOperations === 'true' ? 'true' : quizList.smallOperations === 'false' ? 'false' : 'unknow')
-            setCardiovascularDiseases(quizList.cardiovascularDiseases === 'true' ? 'true' : quizList.cardiovascularDiseases === 'false' ? 'false' : 'unknow')
-            setAcuteInfectiousDisease(quizList.acuteInfectiousDisease === 'true' ? 'true' : quizList.acuteInfectiousDisease === 'false' ? 'false' : 'unknow')
-            setHemorrhages(quizList.hemorrhages === 'true' ? 'true' : quizList.hemorrhages === 'false' ? 'false' : 'unknow')
-            setConvulsions(quizList.convulsions === 'true' ? 'true' : quizList.convulsions === 'false' ? 'false' : 'unknow')
-            setHemorrhagicStroke(quizList.hemorrhagicStroke === 'true' ? true : quizList.hemorrhagicStroke === 'false' ? false : false)
-            setSACStroke(quizList.SACStroke === 'true' ? true : quizList.SACStroke === 'false' ? false : false)
-            setIschemicStroke(quizList.ischemicStroke === 'true' ? true : quizList.ischemicStroke === 'false' ? false : false)
-            setOnmk(quizList.onmk === 'true' ? 'true' : quizList.onmk === 'false' ? 'false' : 'unknow')
+            setSmallOperations(quizList?.smallOperations === 'true' ? 'true' : quizList?.smallOperations === 'false' ? 'false' : 'unknow')
+            setCardiovascularDiseases(quizList?.cardiovascularDiseases === 'true' ? 'true' : quizList?.cardiovascularDiseases === 'false' ? 'false' : 'unknow')
+            setAcuteInfectiousDisease(quizList?.acuteInfectiousDisease === 'true' ? 'true' : quizList?.acuteInfectiousDisease === 'false' ? 'false' : 'unknow')
+            setHemorrhages(quizList?.hemorrhages === 'true' ? 'true' : quizList?.hemorrhages === 'false' ? 'false' : 'unknow')
+            setConvulsions(quizList?.convulsions === 'true' ? 'true' : quizList?.convulsions === 'false' ? 'false' : 'unknow')
+            setHemorrhagicStroke(quizList?.hemorrhagicStroke === 'true' ? true : quizList?.hemorrhagicStroke === 'false' ? false : false)
+            setSACStroke(quizList?.SACStroke === 'true' ? true : quizList?.SACStroke === 'false' ? false : false)
+            setIschemicStroke(quizList?.ischemicStroke === 'true' ? true : quizList?.ischemicStroke === 'false' ? false : false)
+            setOnmk(quizList?.onmk === 'true' ? 'true' : quizList?.onmk === 'false' ? 'false' : 'unknow')
             // setMedicalStaffFullName(quizList.medicalStaffFullName ?? '')
             // setEmployeeID(quizList.employeeID ?? '')
         }
