@@ -1,11 +1,11 @@
 import s from "./index.module.scss";
 import { Title } from "../../ui/Title";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { CheckBox } from "../../ui/CheckBox";
 // import { InputTime } from "../../ui/InputTime";
 // import { InputText } from "../../ui/InputText";
 // import { InputNumber } from "../../ui/InputNumber";
-import { useDebounce } from "../../../common/helpers/useDebounceHook";
+// import { useDebounce } from "../../../common/helpers/useDebounceHook";
 import { useAppSelector, useThunks } from "../../../common/helpers/reduxHook";
 import { QuizThunks } from "../../../store/thunks/quiz.thunks";
 import { QuizState } from "../../../store/reducers/quiz.reducer";
@@ -246,16 +246,7 @@ export const FifthSection = () => {
     quizList?.noteChecklistSMP
       ? setNoteChecklistSMP(quizList?.noteChecklistSMP)
       : setNoteChecklistSMP("");
-  }, [
-    quizList?.noteChecklistSMP,
-    quizList?.onmk,
-    quizList?.smallOperations,
-    quizList?.cardiovascularDiseases,
-    quizList?.acuteInfectiousDisease,
-    quizList?.hemorrhages,
-    quizList?.convulsions,
-    quizList?.hemorrhagicStroke,
-  ]);
+  }, [quizList?.noteChecklistSMP, quizList?.onmk, quizList?.smallOperations, quizList?.cardiovascularDiseases, quizList?.acuteInfectiousDisease, quizList?.hemorrhages, quizList?.convulsions, quizList?.hemorrhagicStroke, quizList?.SACStroke, quizList?.ischemicStroke]);
 
   //   useEffect(
   //     () => {

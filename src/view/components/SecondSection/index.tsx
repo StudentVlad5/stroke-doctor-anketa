@@ -2,10 +2,10 @@ import s from "./index.module.scss";
 import { CheckBox } from "../../ui/CheckBox";
 import { Title } from "../../ui/Title";
 import { InputTime } from "../../ui/InputTime";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useAppSelector, useThunks } from "../../../common/helpers/reduxHook";
 import { QuizThunks } from "../../../store/thunks/quiz.thunks";
-import { useDebounce } from "../../../common/helpers/useDebounceHook";
+// import { useDebounce } from "../../../common/helpers/useDebounceHook";
 import { QuizState } from "../../../store/reducers/quiz.reducer";
 import {
   RadioButtonFalse,
