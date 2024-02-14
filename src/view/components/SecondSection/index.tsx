@@ -17,20 +17,20 @@ export const SecondSection = () => {
   const { addQuizAnswerThunk } = useThunks(QuizThunks);
   const { quizList } = useAppSelector(QuizState);
 
-  const [treatmentStarted, setTreatmentStarted] = useState<boolean>();
+  const [beginStrokeTreatment, setBeginStrokeTreatment] = useState<boolean>();
   // quizList?.treatmentStarted === "true"
   //   ? true
   //   : quizList?.treatmentStarted === "false"
   //   ? false
   //   : false
-  const [intravenousAccessEstablished, setIntravenousAccessEstablished] =
+  const [intravenousAccess, setIntravenousAccess] =
     useState<any>();
   //   quizList?.intravenousAccessEstablished === "true"
   //     ? "true"
   //     : quizList?.intravenousAccessEstablished === "false"
   //     ? "false"
   //     : "false"
-  const [takesAnticoagulants, setTakesAnticoagulants] = useState<any>();
+  const [patientTakingAnticoagulants, setPatientTakingAnticoagulants] = useState<any>();
   const [deliveryTimeHh, setDeliveryTimeHh] = useState<string>("");
   const [deliveryTimeMm, setDeliveryTimeMm] = useState<string>("");
   const [takeECG, setTakeECG] = useState<any>();
@@ -47,7 +47,7 @@ export const SecondSection = () => {
 
   //   useMemo(() => {
   //     if (quizList) {
-  //       setTreatmentStarted(
+  //       setBeginStrokeTreatment(
   //         quizList?.treatmentStarted === "true"
   //           ? true
   //           : quizList?.treatmentStarted === "false"
@@ -119,35 +119,35 @@ export const SecondSection = () => {
   };
 
   useEffect(() => {
-    quizList?.treatmentStarted
-      ? setTreatmentStarted(
-          quizList?.treatmentStarted === "true"
+    quizList?.beginStrokeTreatment
+      ? setBeginStrokeTreatment(
+          quizList?.beginStrokeTreatment === "true"
             ? true
-            : quizList?.treatmentStarted === "true"
+            : quizList?.beginStrokeTreatment === "true"
             ? false
             : false
         )
-      : setTreatmentStarted(false);
+      : setBeginStrokeTreatment(false);
 
-    quizList?.intravenousAccessEstablished
-      ? setIntravenousAccessEstablished(
-          quizList?.intravenousAccessEstablished === "true"
+    quizList?.intravenousAccess
+      ? setIntravenousAccess(
+          quizList?.intravenousAccess === "true"
             ? "true"
-            : quizList?.intravenousAccessEstablished === "true"
+            : quizList?.intravenousAccess === "true"
             ? "false"
             : "false"
         )
-      : setIntravenousAccessEstablished("false");
+      : setIntravenousAccess("false");
 
-    quizList?.takesAnticoagulants
-      ? setTakesAnticoagulants(
-          quizList?.takesAnticoagulants === "true"
+    quizList?.patientTakingAnticoagulants
+      ? setPatientTakingAnticoagulants(
+          quizList?.patientTakingAnticoagulants === "true"
             ? "true"
-            : quizList?.takesAnticoagulants === "false"
+            : quizList?.patientTakingAnticoagulants === "false"
             ? "false"
             : "unknow"
         )
-      : setTakesAnticoagulants("unknow");
+      : setPatientTakingAnticoagulants("unknow");
 
     quizList?.takeECG
       ? setTakeECG(
@@ -167,9 +167,9 @@ export const SecondSection = () => {
       ? setDeliveryTimeMm(quizList?.deliveryTimeMm)
       : setDeliveryTimeMm("");
   }, [
-    quizList?.treatmentStarted,
-    quizList?.intravenousAccessEstablished,
-    quizList?.takesAnticoagulants,
+    quizList?.beginStrokeTreatment,
+    quizList?.intravenousAccess,
+    quizList?.patientTakingAnticoagulants,
     quizList?.takeECG,
     quizList?.deliveryTimeHh,
     quizList?.deliveryTimeMm,
@@ -182,10 +182,10 @@ export const SecondSection = () => {
       <div className={s.inner}>
         <CheckBox
           id={"1"}
-          checked={treatmentStarted}
+          checked={beginStrokeTreatment}
           onChange={(e) => {
-            setTreatmentStarted(e.target.checked);
-            onBlurHandler("treatmentStarted", e.target.checked);
+            setBeginStrokeTreatment(e.target.checked);
+            onBlurHandler("beginStrokeTreatment", e.target.checked);
           }}
         >
           <div className={s.checkbox}>
@@ -230,21 +230,21 @@ export const SecondSection = () => {
                   id={"1_1"}
                   value={"true"}
                   onChange={(str) => {
-                    setIntravenousAccessEstablished(str);
-                    onBlurHandler("intravenousAccessEstablished", str);
+                    setIntravenousAccess(str);
+                    onBlurHandler("intravenousAccess", str);
                   }}
-                  name={"intravenousAccessEstablished"}
-                  currentValue={intravenousAccessEstablished}
+                  name={"intravenousAccess"}
+                  currentValue={intravenousAccess}
                 />
                 <RadioButtonFalse
                   id={"1_2"}
                   value={"false"}
                   onChange={(str) => {
-                    setIntravenousAccessEstablished(str);
-                    onBlurHandler("intravenousAccessEstablished", str);
+                    setIntravenousAccess(str);
+                    onBlurHandler("intravenousAccess", str);
                   }}
-                  name={"intravenousAccessEstablished"}
-                  currentValue={intravenousAccessEstablished}
+                  name={"intravenousAccess"}
+                  currentValue={intravenousAccess}
                 />
                 {/* <RadioButtonUnknow id={'1_3'} value={"unknow"} onChange={(str) => setIntravenousAccessEstablished(str)} name={"intravenousAccessEstablished"} currentValue={intravenousAccessEstablished}/> */}
               </td>
@@ -261,31 +261,31 @@ export const SecondSection = () => {
                   id={"2_1"}
                   value={"true"}
                   onChange={(str) => {
-                    setTakesAnticoagulants(str);
-                    onBlurHandler("takesAnticoagulants", str);
+                    setPatientTakingAnticoagulants(str);
+                    onBlurHandler("patientTakingAnticoagulants", str);
                   }}
-                  name={"takesAnticoagulants"}
-                  currentValue={takesAnticoagulants}
+                  name={"patientTakingAnticoagulants"}
+                  currentValue={patientTakingAnticoagulants}
                 />
                 <RadioButtonFalse
                   id={"2_2"}
                   value={"false"}
                   onChange={(str) => {
-                    setTakesAnticoagulants(str);
-                    onBlurHandler("takesAnticoagulants", str);
+                    setPatientTakingAnticoagulants(str);
+                    onBlurHandler("patientTakingAnticoagulants", str);
                   }}
-                  name={"takesAnticoagulants"}
-                  currentValue={takesAnticoagulants}
+                  name={"patientTakingAnticoagulants"}
+                  currentValue={patientTakingAnticoagulants}
                 />
                 <RadioButtonUnknow
                   id={"2_3"}
                   value={"unknow"}
                   onChange={(str) => {
-                    setTakesAnticoagulants(str);
-                    onBlurHandler("takesAnticoagulants", str);
+                    setPatientTakingAnticoagulants(str);
+                    onBlurHandler("patientTakingAnticoagulants", str);
                   }}
-                  name={"takesAnticoagulants"}
-                  currentValue={takesAnticoagulants}
+                  name={"patientTakingAnticoagulants"}
+                  currentValue={patientTakingAnticoagulants}
                 />
               </td>
             </tr>
