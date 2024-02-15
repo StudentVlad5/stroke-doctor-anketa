@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from "react";
+import { useEffect } from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 
 export const CheckIdProvider = ({
@@ -10,14 +10,16 @@ export const CheckIdProvider = ({
     const location = useLocation();
 
     useEffect(() => {
-        const application_number = localStorage.getItem('application_number')
-        if (!application_number) navigate('/')
+        const application_number = localStorage.getItem('application_number');
+        const id = localStorage.getItem("id");
 
-        if (application_number && location.pathname === '/') {
+        if (!application_number || !id ) navigate('/')
+
+        if (application_number && id && location.pathname === '/') {
             navigate('/1')
         }
 
-    }, []);
+    }, [navigate, location.pathname]);
 
     return children;
 };

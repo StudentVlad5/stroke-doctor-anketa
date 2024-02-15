@@ -32,14 +32,14 @@ export const FifthSection = () => {
   const [hemorrhages, setHemorrhages] = useState<any>();
   const [onmk, setOnmk] = useState<any>();
   const [convulsions, setConvulsions] = useState<any>();
-  const [hemorrhagicStroke, setHemorrhagicStroke] = useState<boolean>();
+  const [hemorrhagicStroke, setHemorrhagicStroke] = useState<boolean>(false);
   // quizList?.hemorrhagicStroke === "true"
   //   ? true
   //   : quizList?.hemorrhagicStroke === "false"
   //   ? false
   //   : false
-  const [SACStroke, setSACStroke] = useState<boolean>();
-  const [ischemicStroke, setIschemicStroke] = useState<boolean>();
+  const [SACStroke, setSACStroke] = useState<boolean>(false);
+  const [ischemicStroke, setIschemicStroke] = useState<boolean>(false);
   const [noteChecklistSMP, setNoteChecklistSMP] = useState<string>("");
 
   // const [medicalStaffFullName, setMedicalStaffFullName] = useState<string>('');
