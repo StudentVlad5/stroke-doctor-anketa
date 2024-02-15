@@ -41,6 +41,11 @@ export const Footer = () => {
   };
 
   const resetChecklist = () =>{
+    addQuizAnswerThunk({
+      params: {
+        anketaStatus: 'canceled',
+      },
+    });
     localStorage.removeItem("application_number");
     localStorage.removeItem("id");
     localStorage.removeItem("start_time");

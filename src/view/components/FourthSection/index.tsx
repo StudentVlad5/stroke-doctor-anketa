@@ -47,7 +47,7 @@ export const FourthSection = () => {
             ? "false"
             : "unknow"
         )
-      : setIntracranialHemorrhages("unknow");
+      : setIntracranialHemorrhages("");
 
     quizList?.majorSurgeriesOrSevereInjuries
       ? setMajorSurgeriesOrSevereInjuries(
@@ -57,7 +57,7 @@ export const FourthSection = () => {
             ? "false"
             : "unknow"
         )
-      : setMajorSurgeriesOrSevereInjuries("unknow");
+      : setMajorSurgeriesOrSevereInjuries("");
 
     quizList?.surgicalInterventions
       ? setSurgicalInterventions(
@@ -67,7 +67,7 @@ export const FourthSection = () => {
             ? "false"
             : "unknow"
         )
-      : setSurgicalInterventions("unknow");
+      : setSurgicalInterventions("");
 
     quizList?.myocardialInfarction
       ? setMyocardialInfarction(
@@ -77,7 +77,7 @@ export const FourthSection = () => {
             ? "false"
             : "unknow"
         )
-      : setMyocardialInfarction("unknow");
+      : setMyocardialInfarction("");
 
     quizList?.stroke
       ? setStroke(
@@ -87,7 +87,7 @@ export const FourthSection = () => {
             ? "false"
             : "unknow"
         )
-      : setStroke("unknow");
+      : setStroke("");
 
     quizList?.arterialPuncture
       ? setArterialPuncture(
@@ -97,7 +97,7 @@ export const FourthSection = () => {
             ? "false"
             : "unknow"
         )
-      : setArterialPuncture("unknow");
+      : setArterialPuncture("");
   }, [
     quizList?.intracranialHemorrhages,
     quizList?.majorSurgeriesOrSevereInjuries,
