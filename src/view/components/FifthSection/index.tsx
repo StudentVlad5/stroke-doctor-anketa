@@ -161,7 +161,7 @@ export const FifthSection = () => {
             ? "false"
             : "unknow"
         )
-      : setSmallOperations("unknow");
+      : setSmallOperations("");
 
     quizList?.cardiovascularDiseases
       ? setCardiovascularDiseases(
@@ -171,7 +171,7 @@ export const FifthSection = () => {
             ? "false"
             : "unknow"
         )
-      : setCardiovascularDiseases("unknow");
+      : setCardiovascularDiseases("");
 
     quizList?.acuteInfectiousDisease
       ? setAcuteInfectiousDisease(
@@ -181,7 +181,7 @@ export const FifthSection = () => {
             ? "false"
             : "unknow"
         )
-      : setAcuteInfectiousDisease("unknow");
+      : setAcuteInfectiousDisease("");
 
     quizList?.hemorrhages
       ? setHemorrhages(
@@ -191,7 +191,7 @@ export const FifthSection = () => {
             ? "false"
             : "unknow"
         )
-      : setHemorrhages("unknow");
+      : setHemorrhages("");
 
     quizList?.convulsions
       ? setConvulsions(
@@ -201,7 +201,7 @@ export const FifthSection = () => {
             ? "false"
             : "unknow"
         )
-      : setConvulsions("unknow");
+      : setConvulsions("");
 
     quizList?.onmk
       ? setOnmk(
@@ -211,7 +211,7 @@ export const FifthSection = () => {
             ? "false"
             : "unknow"
         )
-      : setOnmk("unknow");
+      : setOnmk("");
 
     quizList?.hemorrhagicStroke
       ? setHemorrhagicStroke(

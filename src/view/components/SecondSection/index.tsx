@@ -137,7 +137,7 @@ export const SecondSection = () => {
             ? "false"
             : "false"
         )
-      : setIntravenousAccess("false");
+      : setIntravenousAccess("");
 
     quizList?.patientTakingAnticoagulants
       ? setPatientTakingAnticoagulants(
@@ -147,7 +147,7 @@ export const SecondSection = () => {
             ? "false"
             : "unknow"
         )
-      : setPatientTakingAnticoagulants("unknow");
+      : setPatientTakingAnticoagulants("");
 
     quizList?.takeECG
       ? setTakeECG(
@@ -157,7 +157,7 @@ export const SecondSection = () => {
             ? "false"
             : "false"
         )
-      : setTakeECG("false");
+      : setTakeECG("");
 
     quizList?.deliveryTimeHh
       ? setDeliveryTimeHh(quizList?.deliveryTimeHh)
