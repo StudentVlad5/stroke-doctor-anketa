@@ -17,7 +17,7 @@ export const SecondSection = () => {
   const { addQuizAnswerThunk } = useThunks(QuizThunks);
   const { quizList } = useAppSelector(QuizState);
 
-  const [beginStrokeTreatment, setBeginStrokeTreatment] = useState<boolean>();
+  const [beginStrokeTreatment, setBeginStrokeTreatment] = useState<boolean>(false);
   // quizList?.treatmentStarted === "true"
   //   ? true
   //   : quizList?.treatmentStarted === "false"

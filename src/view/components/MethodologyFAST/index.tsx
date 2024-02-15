@@ -28,6 +28,7 @@ export const MethodologyFAST = () => {
     useState(false);
   const [firstSymptomsDate_unknown, setFirstSymptomsDate_unknown] =
     useState(false);
+  const start_time_auto = localStorage.getItem("start_time_auto");
 
   // const debouncedSaggingFace = useDebounce(saggingFace, 500);
   // const debouncedHandDisplacement = useDebounce(handDisplacement, 500);
@@ -231,6 +232,12 @@ export const MethodologyFAST = () => {
             checked={firstSymptomsTime_unknown}
             onChange={(e) => {
               onChangeHandler(e, setFirstSymptomsTime_unknown);
+              localStorage.setItem(
+                "start_time", "00:00");
+              setFirstSymptomsTimeHh('00');
+              setFirstSymptomsTimeMm('00');
+              onBlurHandler("firstSymptomsTimeHh", "00");
+              onBlurHandler("firstSymptomsTimeMm", "00");
               onBlurHandler("firstSymptomsTime_unknown", e.target.checked);
             }}
           >
@@ -243,6 +250,9 @@ export const MethodologyFAST = () => {
             onChange={(e) => {
               onChangeHandler(e, setFirstSymptomsDate_unknown);
               onBlurHandler("firstSymptomsDate_unknown", e.target.checked);
+              !firstSymptomsDate_unknown ? localStorage.setItem(
+                "start_time", `${start_time_auto}`) : localStorage.setItem(
+                "start_time", `${firstSymptomsTimeHh}:${firstSymptomsTimeMm}`);
             }}
           >
             {/* <img src={QuestionMark} alt="" /> */}
