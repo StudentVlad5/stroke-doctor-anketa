@@ -1,6 +1,6 @@
 import s from "./index.module.scss";
 import { Button } from "../../ui/Button";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useThunks } from "../../../common/helpers/reduxHook";
 import { QuizThunks } from "../../../store/thunks/quiz.thunks";

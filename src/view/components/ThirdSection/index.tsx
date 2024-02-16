@@ -1,7 +1,7 @@
 import s from './index.module.scss';
 import {Title} from "../../ui/Title";
-import {useEffect, useMemo, useState} from "react";
-import {useDebounce} from "../../../common/helpers/useDebounceHook";
+import {useMemo, useState} from "react";
+// import {useDebounce} from "../../../common/helpers/useDebounceHook";
 import {useAppSelector, useThunks} from "../../../common/helpers/reduxHook";
 import {QuizThunks} from "../../../store/thunks/quiz.thunks";
 import {QuizState} from "../../../store/reducers/quiz.reducer";
@@ -16,13 +16,6 @@ export const ThirdSection = () => {
     const [arterialPressureD, setArterialPressureD] = useState(quizList?.arterialPressureD ?? '');
     const [patientBodyWeight, setPatientBodyWeight] = useState(quizList?.patientBodyWeight ?? '');
     const [patientAge, setPatientAge] = useState(quizList?.patientAge ?? '');
-
-    // const debouncedBloodSugarLevel = useDebounce(bloodSugarLevel, 500);
-    // const debouncedBodyTemperature = useDebounce(bodyTemperature, 500);
-    // const debouncedArterialPressureS = useDebounce(arterialPressureS, 500);
-    // const debouncedArterialPressureD = useDebounce(arterialPressureD, 500);
-    // const debouncedPatientBodyWeight = useDebounce(patientBodyWeight, 500);
-    // const debouncedPatientAge = useDebounce(patientAge, 500);
 
     useMemo(() => {
         if (quizList) {
@@ -53,20 +46,6 @@ export const ThirdSection = () => {
             if(theEvent.preventDefault) theEvent.preventDefault();
         }
     }
-
-    /*useEffect(() => {
-        addQuizAnswerThunk({
-            params: {
-                bloodSugarLevel: debouncedBloodSugarLevel,
-                bodyTemperature: debouncedBodyTemperature,
-                arterialPressureS: debouncedArterialPressureS,
-                arterialPressureD: debouncedArterialPressureD,
-                patientBodyWeight: debouncedPatientBodyWeight,
-                patientAge: debouncedPatientAge
-            }
-        })
-    }, [debouncedBloodSugarLevel, debouncedBodyTemperature, debouncedArterialPressureS, debouncedArterialPressureD, debouncedPatientBodyWeight, debouncedPatientAge]);*/
-
     return (
         <div className={s.ThirdSection}>
             <Title>Раздел 3: Соберите следующую информацию</Title>

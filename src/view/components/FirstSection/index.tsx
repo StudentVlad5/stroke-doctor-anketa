@@ -59,10 +59,6 @@ export const FirstSection = () => {
                 <InputText title={"ФИО пациента"}
                            subtitle={"Внесите информацию по визуальному осмотру, если данных по личности не имеются"}
                            onChange={(e) => setPatientFullName(e.target.value)} value={patientFullName} onBlur={() => onBlurHandler('patientFullName', patientFullName)} />
-
-                {/*<InputText title={"ИИН пациента"}
-                           onBlur={onBlurHandler}
-                           onChange={(e) => setPatientINN(e.target.value)} value={patientINN}/>*/}
           
                 <InputNumber title={"ИИН пациента"} invalidMessage={invalidMessage} inputMode={"numeric"}
                              onChange={(e) => setPatientINN(e.target.value)} value={patientINN} minLength={12} maxLength={12} onBlur={() => onBlurHandler('patientINN', patientINN)} />

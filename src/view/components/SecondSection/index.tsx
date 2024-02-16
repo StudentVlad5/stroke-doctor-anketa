@@ -18,98 +18,12 @@ export const SecondSection = () => {
   const { quizList } = useAppSelector(QuizState);
 
   const [beginStrokeTreatment, setBeginStrokeTreatment] = useState<boolean>(false);
-  // quizList?.treatmentStarted === "true"
-  //   ? true
-  //   : quizList?.treatmentStarted === "false"
-  //   ? false
-  //   : false
   const [intravenousAccess, setIntravenousAccess] =
     useState<any>();
-  //   quizList?.intravenousAccessEstablished === "true"
-  //     ? "true"
-  //     : quizList?.intravenousAccessEstablished === "false"
-  //     ? "false"
-  //     : "false"
   const [patientTakingAnticoagulants, setPatientTakingAnticoagulants] = useState<any>();
   const [deliveryTimeHh, setDeliveryTimeHh] = useState<string>("");
   const [deliveryTimeMm, setDeliveryTimeMm] = useState<string>("");
   const [takeECG, setTakeECG] = useState<any>();
-
-  //   const debouncedTreatmentStarted = useDebounce(treatmentStarted, 500);
-  //   const debouncedIntravenousAccessEstablished = useDebounce(
-  //     intravenousAccessEstablished,
-  //     500
-  //   );
-  //   const debouncedTakesAnticoagulants = useDebounce(takesAnticoagulants, 500);
-  //   // const debouncedDeliveryTimeHh = useDebounce(deliveryTimeHh, 500);
-  //   // const debouncedDeliveryTimeMm = useDebounce(deliveryTimeMm, 500)
-  //   const debouncedTakeECG = useDebounce(takeECG, 500);
-
-  //   useMemo(() => {
-  //     if (quizList) {
-  //       setBeginStrokeTreatment(
-  //         quizList?.treatmentStarted === "true"
-  //           ? true
-  //           : quizList?.treatmentStarted === "false"
-  //           ? false
-  //           : false
-  //       );
-  //       setIntravenousAccessEstablished(
-  //         quizList?.intravenousAccessEstablished === "true"
-  //           ? "true"
-  //           : quizList?.intravenousAccessEstablished === "false"
-  //           ? "false"
-  //           : "false"
-  //       );
-  //       setTakesAnticoagulants(
-  //         quizList?.takesAnticoagulants === "true"
-  //           ? "true"
-  //           : quizList?.takesAnticoagulants === "false"
-  //           ? "false"
-  //           : "unknow"
-  //       );
-  //       setTakeECG(
-  //         quizList?.takeECG === "true"
-  //           ? "true"
-  //           : quizList?.takeECG === "false"
-  //           ? "false"
-  //           : "false"
-  //       );
-  //       setDeliveryTimeHh(quizList?.deliveryTimeHh ?? "");
-  //       setDeliveryTimeMm(quizList?.deliveryTimeMm ?? "");
-  //     }
-  //   }, [quizList]);
-
-  /*useMemo(() => {
-        addQuizAnswerThunk({
-            params: {
-                treatmentStarted,
-                intravenousAccessEstablished,
-                takesAnticoagulants,
-                deliveryTimeHh,
-                deliveryTimeMm,
-            }
-        })
-    }, [treatmentStarted, intravenousAccessEstablished, takesAnticoagulants, deliveryTimeHh, deliveryTimeMm])*/
-
-  //   useEffect(() => {
-  //     addQuizAnswerThunk({
-  //       params: {
-  //         treatmentStarted: debouncedTreatmentStarted,
-  //         intravenousAccessEstablished: debouncedIntravenousAccessEstablished,
-  //         takesAnticoagulants: debouncedTakesAnticoagulants,
-  //         takeECG: debouncedTakeECG,
-  //         // deliveryTimeHh: debouncedDeliveryTimeHh,
-  //         // deliveryTimeMm: debouncedDeliveryTimeMm
-  //       },
-  //     });
-  //   }, [
-  //     debouncedTreatmentStarted,
-  //     debouncedIntravenousAccessEstablished,
-  //     debouncedTakesAnticoagulants,
-  //     debouncedTakeECG,
-  //   ]);
-
   const onBlurHandler = (name: string, value: any) => {
     addQuizAnswerThunk({
       params: {
@@ -320,24 +234,6 @@ export const SecondSection = () => {
             </tr>
           </tbody>
         </table>
-        {/* 
-                <CheckBox id={"2"} checked={intravenousAccessEstablished} onChange={(e) => setIntravenousAccessEstablished(e.target.checked)}>
-                    <div className={s.checkbox}>
-                        <span className={s.title}>Установлен <strong>внутривенный доступ</strong></span> <br/>
-                        <span className={s.subtitle}>(предпочтительно 2 канюли большого диаметра с портом)</span>
-                    </div>
-                </CheckBox> 
-                <CheckBox id={"3"} checked={takesAnticoagulants} onChange={(e) => setTakesAnticoagulants(e.target.checked)}>
-                    <div className={s.checkbox}>
-                        <span className={s.title}>Пациент принимает <strong>антикоагулянты</strong></span>
-                    </div>
-                </CheckBox>
-                <CheckBox id={"4"} checked={takeECG} onChange={(e) => setTakeECG(e.target.checked)}>
-                    <div className={s.checkbox}>
-                        <span className={s.title}>Снимите ЭКГ у пациента</span>
-                    </div>
-                </CheckBox>
-                */}
       </div>
     </div>
   );

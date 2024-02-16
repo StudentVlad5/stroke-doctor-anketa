@@ -3,13 +3,12 @@ import { Title } from "../../ui/Title";
 import { CheckBox } from "../../ui/CheckBox";
 import { InputTime } from "../../ui/InputTime";
 import { useEffect, useState } from "react";
-// import {log} from "util";
 import { useAppSelector, useThunks } from "../../../common/helpers/reduxHook";
 import { QuizThunks } from "../../../store/thunks/quiz.thunks";
 // import {useDebounce} from "../../../common/helpers/useDebounceHook";
 import { QuizState } from "../../../store/reducers/quiz.reducer";
 import { InputDate } from "../../ui/InputDate";
-// import QuestionMark from "../../../assets/images/questionMark.png";
+
 
 export const MethodologyFAST = () => {
   const { addQuizAnswerThunk } = useThunks(QuizThunks);
@@ -29,13 +28,6 @@ export const MethodologyFAST = () => {
   const [firstSymptomsDate_unknown, setFirstSymptomsDate_unknown] =
     useState(false);
   const start_time_auto = localStorage.getItem("start_time_auto");
-
-  // const debouncedSaggingFace = useDebounce(saggingFace, 500);
-  // const debouncedHandDisplacement = useDebounce(handDisplacement, 500);
-  // const debouncedSpeechDisorders = useDebounce(speechDisorders, 500);
-  // const debouncedFirstSymptomsTimeHh = useDebounce(firstSymptomsTimeHh, 500);
-  // const debouncedFirstSymptomsTimeMm = useDebounce(firstSymptomsTimeMm, 500);
-
   const onChangeHandler = (e: any, setValue: any) => {
     setValue(e.target.checked);
   };
@@ -87,40 +79,6 @@ export const MethodologyFAST = () => {
     quizList?.firstSymptomsTime_unknown,
     quizList?.firstSymptomsDate_unknown,
   ]);
-
-  // useMemo(() => {
-  //     if (quizList) {
-  //         setSaggingFace(quizList.saggingFace === 'true' ? true : quizList.saggingFace === 'false' ? false : false)
-  //         setHandDisplacement(quizList.handDisplacement === 'true' ? true : quizList.handDisplacement === 'false' ? false : false)
-  //         setSpeechDisorders(quizList.speechDisorders === 'true' ? true : quizList.speechDisorders === 'false' ? false : false)
-  //         setFirstSymptomsTimeHh(quizList.firstSymptomsTimeHh ?? '')
-  //         setFirstSymptomsTimeMm(quizList.firstSymptomsTimeMm ?? '')
-  //     }
-  // }, [quizList])
-
-  // useEffect(() => {
-  //     addQuizAnswerThunk({
-  //         params: {
-  //             saggingFace,
-  //             handDisplacement,
-  //             speechDisorders,
-  //             // firstSymptomsTimeHh: debouncedFirstSymptomsTimeHh,
-  //             // firstSymptomsTimeMm: debouncedFirstSymptomsTimeMm,
-  //         }
-  //     })
-  // }, [saggingFace, handDisplacement, speechDisorders]);
-
-  /*    useEffect(() => {
-        // localStorage.setItem('start_time', `${debouncedFirstSymptomsTimeHh}:${debouncedFirstSymptomsTimeMm}`)
-        if (firstSymptomsTimeHh) {
-            localStorage.setItem('start_time', `${debouncedFirstSymptomsTimeHh ?? '00'}:${debouncedFirstSymptomsTimeMm ?? '00'}`)
-            localStorage.setItem('setTime', 'true')
-        }
-        if (firstSymptomsTimeMm) {
-            localStorage.setItem('start_time', `${debouncedFirstSymptomsTimeHh ?? '00'}:${debouncedFirstSymptomsTimeMm ?? '00'}`)
-            localStorage.setItem('setTime', 'true')
-        }
-    }, [debouncedFirstSymptomsTimeHh, debouncedFirstSymptomsTimeMm]);*/
 
   const onBlurHandler = (name: string, value: any) => {
     addQuizAnswerThunk({
@@ -222,6 +180,7 @@ export const MethodologyFAST = () => {
             onChangeDate={(e) => setFirstSymptomsDate(e.target.value)}
             onBlur={() => {
               onBlurHandler("firstSymptomsDate", firstSymptomsDate ?? "");
+              onBlurHandler("firstSymptomsDate_unknown", false);
             }}
           />
         </div>
@@ -253,10 +212,10 @@ export const MethodologyFAST = () => {
               !firstSymptomsDate_unknown ? localStorage.setItem(
                 "start_time", `${start_time_auto}`) : localStorage.setItem(
                 "start_time", `${firstSymptomsTimeHh}:${firstSymptomsTimeMm}`);
+                !firstSymptomsDate_unknown &&  setFirstSymptomsDate("");
+                !firstSymptomsDate_unknown && onBlurHandler("firstSymptomsDate", "")
             }}
           >
-            {/* <img src={QuestionMark} alt="" /> */}
-
             <span className={s.title}>дата неизвестна</span>
           </CheckBox>
         </div>

@@ -38,9 +38,7 @@ export const Header = () => {
     const startTimeAuto = localStorage.getItem("start_time_auto");
     if (startTime && startTime?.replace(":", "")) {
       const interval = setInterval(() => {
-        // let firstTIme = startTime;
         let currentDate = new Date();
-        // let currentTime = `${new Date().getHours()}:${new Date().getMinutes()}`;
         let firstDate = new Date();
         if(quizList?.firstSymptomsDate){firstDate = new Date(quizList?.firstSymptomsDate)};
         if(quizList?.firstSymptomsTimeHh){firstDate.setHours(quizList?.firstSymptomsTimeHh)};
@@ -48,10 +46,6 @@ export const Header = () => {
 
         let different =
           Number(currentDate) - Number(firstDate);
-
-        // let different =
-        //   Number(getDate(currentTime)) - Number(getDate(firstTIme));
-
         let hours = Math.floor((different) / 3600000);
         let minutes = Math.round(((different % 86400000) % 3600000) / 60000);
         let result =
@@ -59,6 +53,7 @@ export const Header = () => {
           ":" +
           (minutes > 9 ? minutes : `0${minutes}`);
 
+          console.log(result)
         setDifferentTime(result);
 
         return () => clearInterval(interval);
@@ -79,7 +74,7 @@ export const Header = () => {
           ":" +
           (minutes > 9 ? minutes : `0${minutes}`);
 
-        // console.log(result)
+        console.log(result)
         setDifferentTime(result);
 
         return () => clearInterval(interval);
@@ -126,30 +121,26 @@ export const Header = () => {
                 С момента <br /> появления симптомов
               </span>
             )}
-            {/* <span>С момента <br/> появления симптомов</span> */}
           </div>
           <div className={s.time}>
             <div className={s.hours}>
               <span>
-                {differentTime[0]}
-                {differentTime[1]}
+                {differentTime.split(":")[0]}
+                {/* {differentTime[1]} */}
               </span>
               <span className={s.unit}>часов</span>
             </div>
             <span className={s.delimeter}>:</span>
             <div className={s.minutes}>
               <span>
-                {differentTime[3]}
-                {differentTime[4]}
+              {differentTime.split(":")[1]}
+                {/* {differentTime[4]} */}
               </span>
               <span className={s.unit}>минут</span>
             </div>
           </div>
         </div>
       )}
-      {/*<div className={s.titleBox}>
-                <h1>Алгоритм оказания помощи <br/> при ИНСУЛЬТЕ В ОСТРОМ ПЕРИОДЕ</h1>
-            </div>*/}
       <Modal
         isVisible={isOpenModal}
         onClose={() => setIsOpenModal(false)}
