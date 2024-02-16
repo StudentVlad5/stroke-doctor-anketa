@@ -200,7 +200,7 @@ export const MethodologyFAST = () => {
               onBlurHandler("firstSymptomsTime_unknown", e.target.checked);
             }}
           >
-            <span className={s.title}>время неизвестно</span>
+            <span className={s.title}>Время не известно</span>
           </CheckBox>
 
           <CheckBox
@@ -216,7 +216,7 @@ export const MethodologyFAST = () => {
                 !firstSymptomsDate_unknown && onBlurHandler("firstSymptomsDate", "")
             }}
           >
-            <span className={s.title}>дата неизвестна</span>
+            <span className={s.title}>Дата не известна</span>
           </CheckBox>
         </div>
       </div>
