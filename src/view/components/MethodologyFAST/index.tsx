@@ -28,6 +28,8 @@ export const MethodologyFAST = () => {
   const [firstSymptomsDate_unknown, setFirstSymptomsDate_unknown] =
     useState(false);
   const start_time_auto = localStorage.getItem("start_time_auto");
+  const start_date_auto = new Date(Number(localStorage.getItem("id"))).toLocaleDateString().split(".").reverse().join('-');
+
   const onChangeHandler = (e: any, setValue: any) => {
     setValue(e.target.checked);
   };
@@ -193,14 +195,13 @@ export const MethodologyFAST = () => {
               onChangeHandler(e, setFirstSymptomsTime_unknown);
               localStorage.setItem(
                 "start_time", "00:00");
-              setFirstSymptomsTimeHh('00');
-              setFirstSymptomsTimeMm('00');
               onBlurHandler("firstSymptomsTimeHh", "00");
               onBlurHandler("firstSymptomsTimeMm", "00");
               onBlurHandler("firstSymptomsTime_unknown", e.target.checked);
+              firstSymptomsTime_unknown && onBlurHandler("firstSymptomsDate_unknown", false);
             }}
           >
-            <span className={s.title}>время неизвестно</span>
+            <span className={s.title}>время не известно</span>
           </CheckBox>
 
           <CheckBox
@@ -212,11 +213,15 @@ export const MethodologyFAST = () => {
               !firstSymptomsDate_unknown ? localStorage.setItem(
                 "start_time", `${start_time_auto}`) : localStorage.setItem(
                 "start_time", `${firstSymptomsTimeHh}:${firstSymptomsTimeMm}`);
-                !firstSymptomsDate_unknown &&  setFirstSymptomsDate("");
-                !firstSymptomsDate_unknown && onBlurHandler("firstSymptomsDate", "")
+                !firstSymptomsDate_unknown &&  setFirstSymptomsDate(start_date_auto);
+                !firstSymptomsDate_unknown && onBlurHandler("firstSymptomsDate", start_date_auto);
+                !firstSymptomsDate_unknown && onBlurHandler("firstSymptomsTime_unknown", true);
+                !firstSymptomsDate_unknown && onBlurHandler("firstSymptomsTimeHh", `${localStorage.getItem("start_time")?.split(":")[0]}`);
+                !firstSymptomsDate_unknown && onBlurHandler("firstSymptomsTimeMm", `${localStorage.getItem("start_time")?.split(":")[1]}`);
+
             }}
           >
-            <span className={s.title}>дата неизвестна</span>
+            <span className={s.title}>дата не известна</span>
           </CheckBox>
         </div>
       </div>

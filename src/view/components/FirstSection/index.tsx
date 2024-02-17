@@ -57,13 +57,13 @@ export const FirstSection = () => {
             <Title>Раздел 1: Информация по пациенту</Title>
             <div className={s.inner}>
                 <InputText title={"ФИО пациента"}
-                           subtitle={"Внесите информацию по визуальному осмотру, если данных по личности не имеются"}
+                           subtitle={"В случае отсутствия данных о личности, внести информацию по визуальному осмотру"}
                            onChange={(e) => setPatientFullName(e.target.value)} value={patientFullName} onBlur={() => onBlurHandler('patientFullName', patientFullName)} />
           
                 <InputNumber title={"ИИН пациента"} invalidMessage={invalidMessage} inputMode={"numeric"}
                              onChange={(e) => setPatientINN(e.target.value)} value={patientINN} minLength={12} maxLength={12} onBlur={() => onBlurHandler('patientINN', patientINN)} />
 
-                <Textarea title={"Визуальное описание - при отсутствии личных данных"}
+                <Textarea title={"В случае отсутствия данных о личности, внести информацию по визуальному осмотру"}
                           onChange={(e) => setVisualDescription(e.target.value)} value={visualDescription} onBlur={() => onBlurHandler('visualDescription', visualDescription)} />
 
                 <div className={s.sex}>

@@ -41,10 +41,10 @@ export const StartPage = () => {
     const onSubmitFormHandler = async () => {
         localStorage.setItem('id', Date.now().toString());
         localStorage.setItem('application_number', number);
-        const startTimeAutoHh = new Date().getHours()
-        const startTimeAutoMm =new Date().getMinutes()
+        const startTimeAutoHh = new Date().getHours();
+        const startTimeAutoMm =new Date().getMinutes();
 
-        localStorage.setItem('start_time_auto', `${startTimeAutoHh}:${startTimeAutoMm}`)
+        localStorage.setItem('start_time_auto', `${startTimeAutoHh}:${startTimeAutoMm}`);
         addQuizAnswerThunk({ params: {
             employeeID: employeeID,
             startTimeAutoHh: startTimeAutoHh,
@@ -57,11 +57,10 @@ export const StartPage = () => {
         <div className={s.StartPage}>
             { quizIsLoading && <Skeleton /> }
             <div className={s.inputWrapper}>
-                {/*<InputText placeholder={"Введите № бригады СМП"} onChange={onChange}/>*/}
                 <IMaskInput className={s.textInput} value={number} inputMode='numeric'
                             onChange={onChange}
                             placeholder='Введите № бригады СМП' mask={"00"}/>
-                <button className={s.clue} onClick={() => setIsOpenClue(true)}>
+                <button type="button" title="The brigade number" className={s.clue} onClick={() => setIsOpenClue(true)}>
                     <img src={ClueImg} alt=""/>
                 </button>
             </div>
@@ -73,7 +72,7 @@ export const StartPage = () => {
                              inputMode={'numeric'}
                              onChange={e => setEmployeeID(e.target.value)}
                              maxLength={5} minLength={5}/>
-                <button className={s.clue} onClick={() => setIsOpenClue2(true)}>
+                <button type="button" title="Employee ID" className={s.clue} onClick={() => setIsOpenClue2(true)}>
                     <img src={ClueImg} alt=""/>
                 </button>
             </div>
