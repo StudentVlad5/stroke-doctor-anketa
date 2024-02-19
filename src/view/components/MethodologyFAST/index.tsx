@@ -193,12 +193,12 @@ export const MethodologyFAST = () => {
             checked={firstSymptomsTime_unknown}
             onChange={(e) => {
               onChangeHandler(e, setFirstSymptomsTime_unknown);
-              localStorage.setItem(
-                "start_time", "00:00");
-              onBlurHandler("firstSymptomsTimeHh", "00");
-              onBlurHandler("firstSymptomsTimeMm", "00");
+              // localStorage.setItem(
+              //   "start_time", "00:00");
+              // onBlurHandler("firstSymptomsTimeHh", "00");
+              // onBlurHandler("firstSymptomsTimeMm", "00");
               onBlurHandler("firstSymptomsTime_unknown", e.target.checked);
-              firstSymptomsTime_unknown && onBlurHandler("firstSymptomsDate_unknown", false);
+              // firstSymptomsTime_unknown && onBlurHandler("firstSymptomsDate_unknown", false);
             }}
           >
             <span className={s.title}>время не известно</span>
@@ -210,14 +210,14 @@ export const MethodologyFAST = () => {
             onChange={(e) => {
               onChangeHandler(e, setFirstSymptomsDate_unknown);
               onBlurHandler("firstSymptomsDate_unknown", e.target.checked);
-              !firstSymptomsDate_unknown ? localStorage.setItem(
-                "start_time", `${start_time_auto}`) : localStorage.setItem(
-                "start_time", `${firstSymptomsTimeHh}:${firstSymptomsTimeMm}`);
-                !firstSymptomsDate_unknown &&  setFirstSymptomsDate(start_date_auto);
-                !firstSymptomsDate_unknown && onBlurHandler("firstSymptomsDate", start_date_auto);
-                !firstSymptomsDate_unknown && onBlurHandler("firstSymptomsTime_unknown", true);
-                !firstSymptomsDate_unknown && onBlurHandler("firstSymptomsTimeHh", `${localStorage.getItem("start_time")?.split(":")[0]}`);
-                !firstSymptomsDate_unknown && onBlurHandler("firstSymptomsTimeMm", `${localStorage.getItem("start_time")?.split(":")[1]}`);
+              // !firstSymptomsDate_unknown ? localStorage.setItem(
+              //   "start_time", `${start_time_auto}`) : localStorage.setItem(
+              //   "start_time", `${firstSymptomsTimeHh}:${firstSymptomsTimeMm}`);
+              //   !firstSymptomsDate_unknown &&  setFirstSymptomsDate(start_date_auto);
+              //   !firstSymptomsDate_unknown && onBlurHandler("firstSymptomsDate", start_date_auto);
+              //   !firstSymptomsDate_unknown && onBlurHandler("firstSymptomsTime_unknown", true);
+              //   !firstSymptomsDate_unknown && onBlurHandler("firstSymptomsTimeHh", `${localStorage.getItem("start_time")?.split(":")[0]}`);
+              //   !firstSymptomsDate_unknown && onBlurHandler("firstSymptomsTimeMm", `${localStorage.getItem("start_time")?.split(":")[1]}`);
 
             }}
           >
