@@ -27,8 +27,8 @@ export const MethodologyFAST = () => {
     useState(false);
   const [firstSymptomsDate_unknown, setFirstSymptomsDate_unknown] =
     useState(false);
-  const start_time_auto = localStorage.getItem("start_time_auto");
-  const start_date_auto = new Date(Number(localStorage.getItem("id"))).toLocaleDateString().split(".").reverse().join('-');
+  // const start_time_auto = localStorage.getItem("start_time_auto");
+  // const start_date_auto = new Date(Number(localStorage.getItem("id"))).toLocaleDateString().split(".").reverse().join('-');
 
   const onChangeHandler = (e: any, setValue: any) => {
     setValue(e.target.checked);
